@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 
+
 router.get('/', (req, res, next) => {
     if (req.query.fail) {
         res.render('login', { msg: "Utilisateur et/ou mot de passe invalide." })
@@ -11,7 +12,7 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', passport.authenticate('local', {
-    successRedirect: '/users',
+    successRedirect: '/admin-lise_admins',
     failureRedirect: '/login?fail=true'
 }))
 
