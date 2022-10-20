@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <%- include('./partials/head', { title: 'Inscription' }); %>
+    <link href="stylesheets/auth5.css" rel="stylesheet" type="text/css">
+
+    <!--encadrer-->
+    <style>
+    .encadrer_texte {
+    width: fit-content;
+    border: 2px solid rgb(219, 219, 219);
+    padding: 4px;
+    margin: 0px;
+    }
+    </style>
+
+</head>
+
+<body>
+<img src="images/IGR_logo_blac.jpg" alt="Trulli" width="200" height="85" >
+
+<div id="tsparticles"></div>
+    <main class="box">
+        <h2>Inscription</h2>
+        <form method = "post" action="/createAccount">
+            <div class="inputBox" style="margin: 10px 0px -10px 0px;">
+                <label for="username">Identifiant</label>
+                <input 
+                    type="text" 
+                    name="username" 
+                    id="username" 
+                    placeholder="Rentrez votre numéro DA " 
+                    required onkeypress="validate_id()"/>
+            </div> 
+            <div style="margin: 0px 00px 10px 0px;"><span id="wrong_id_alert" ></span> </div>
+
+            <div class="inputBox">
+                <label for="userName">Nom</label>
+                <input type="text" 
+                    name="userName" 
+                    id="alphaNom" 
+                    placeholder="Rentrez votre nom" 
+                    required onkeypress="validate_alphaNom()"/>
+            </div>
+            <div style="margin: 0px 00px 10px 0px;"><span id="wrong_nom_alert" ></span> </div>
+
+            <div class="inputBox">
+                <label for="userSurName">Prénom</label>
+                <input type="text" 
+                        name="userSurName" 
+                        id="alphaPrenom" 
+                        placeholder="Rentrez votre Prénom" 
+                        required onkeypress="validate_alphaPrenom()"/>
+            </div>
+            <div style="margin: 0px 00px 10px 0px;"><span id="wrong_alphaPrenom_alert" ></span> </div>
+
+
+            <div class="inputBox">
+                    <label >Mot de passe</label>
+                        <input id="password"
+                                type="password" 
+                                name="password" 
+                                placeholder="Rentrez votre mot de passe"  
+                                required onkeyup="validate_password()"/>
+                            
+                    <div style="margin: 10px 0px -10px 0px;">
+                        <label>Confirmez votre mot de passe</label>
+                        <input id="confirm_pass"
+                                type="password" 
+                                name="userPassword"  
+                                placeholder="Confirmez votre mot de passe"
+                                required onkeyup="validate_password()"/> 
+                    </div>  
+            </div>
+            <div style="margin: 0px 00px 10px 0px;"><span id="wrong_pass_alert" ></span> </div>
+            
+            
+            <div class="encadrer_texte">
+                <div>
+                    <div class="inputBox">
+                        <label for="userConfirmPassword">Question secréte 1 : Dans quelle ville se sont rencontrés vos parents ? </label>
+                        <input type="text" 
+                        name="questionSecrete_1" 
+                        id="alphaQ1" 
+                        placeholder="Donnez votre réponse"
+                        required onkeypress="validate_alphaQ1()"/>
+                    </div>
+                <div style="margin: 0px 00px 10px 0px;"><span id='wrong_alphaQ1_alert'></span> </div>
+            </div>
+            
+
+            <div class="inputBox">
+                    <label for="userConfirmPassword">Question secréte 2 : Quel était le métier de votre grand-père ?</label>
+                    <input type="text" 
+                        name="questionSecrete_2" 
+                        id="alphaQ2" 
+                        placeholder="Donnez votre réponse"
+                        required onkeypress="validate_alphaQ2()"/>
+            </div>
+            <div style="margin: 0px 00px 10px 0px;"><span id='wrong_alphaQ2_alert'></span> </div>
+            </div>
+
+            <% if(msg) { %>
+                <div style="margin: 0px 00px 10px 0px;">
+                    <span style="color: red; font-weight: bold;">
+                        <%= msg %>
+                    </span>
+                </div>
+            <%}%>
+
+            <div style="margin: 20px 10px 10px 195px;">
+                <button id="create"
+                        onclick="wrong_pass_alert()"  
+                        type="submit" >
+                    S'inscrire
+                </button>
+                <br/>
+                <br/>
+            </div>
+
+            <div style="margin: 2px 10px 20px 180px;">
+                <a class="button" href="login" style="float: left;">Se connecter</a>
+            </div>
+            
+            
+        </form>
+    </main>
+    <footer>
+        <%- include('./partials/footer'); %>
+    </footer>
+
+
+</body>
+    <script src="javascripts/style.js" type="text/javascript"></script>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <%- include('./partials/head2', { title: 'Users' }); %>
+ 
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+		
+
+	
+		<div class="header">
+			<a href="https://www.institut-grasset.qc.ca">
+        <img src="images/IGR_logo_blac.jpg"alt="Trulli" >
+      </a>
+			<div class="header-right">
+		 
+
+				<nav class="header-right">
+					<div class="container-fluid">
+					  <div class="navbar-header">
+					  </div>
+					  <ul class="nav navbar-nav">
+						<li><a href="/petudinat">Portfolio</a></li>
+						<li class="dropdown"><a  href="#" class="dropdown-toggle" data-toggle="dropdown" href="#">Liste <span class="caret"></span></a>
+						  <ul class="dropdown-menu">
+							<li><a href="Liste-elemnts.html">Liste des &eacute;lements</a></li>
+							<li><a href="AjouterElm.html">Ajouter &eacute;lement</a></li>
+						  </ul>
+						</li>
+						<li class="dropdown"><a class="active"  href="#" class="dropdown-toggle" data-toggle="dropdown" href="#">Profil <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+							  <li><a class="active" href="Modifier-profil.html">Modifier profile</a></li>
+							  <li><a  href="Modifier-profil-changer-pass.html">Changer le mot de passe </a></li>
+							  <li><a href="">Desactiver le compte</a></li>
+							</ul>
+						  </li> 
+              <li><a href="portfolio.html"></a></li>
+              <li>
+                 <form  method="post" action="/logout">
+
+                  <input type="submit" value="Deconnexion">
+                </form>
+              </li>  
+           
+					  </ul>
+					</div>
+				  </nav>
+			</div>
+		  </div>
+	
+		
+		<!-- END #fh5co-header -->
+		<div class="page-content2">
+
+			<h1 class="no-margin">Modifier Profil</h1>
+
+				
+	
+		  </div>
+		
+		  <div>
+
+		  </div>
+
+		  <section>
+
+			<div class="row">
+				
+				<div class="container">
+					
+
+					<img src="img/user1.jpg" alt="Nature" style="left: 70px ;  width:300px;border-radius: 70%;" class="responsive">
+				</div>
+			  </div>
+			
+	
+	<div class="container">
+	<form action="/action_page.php">
+ 
+
+		   <div class="row">
+			<div class="col-25">
+				<label for="avatar">choisir la photo de profile :</label>
+			</div>
+
+			
+			<div><div class="col-75" >
+				<input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"></div>
+			</div>
+			 
+		</div>
+
+
+	
+		<div class="row">
+			<div class="col-25">
+			  <label for="fname">Nom</label>
+			</div>
+
+			
+			<div><div class="col-75" >
+			  <input type="text"  
+			  id= "alphaNom"
+			  placeholder="Votre Nom.." 
+			  required onkeyup="validate_alphaNom()">
+			 <span id="wrong_nom_alert" ></span></div>
+			</div>
+			 
+		</div>
+
+
+
+		  <div class="row">
+			<div class="col-25">
+			  <label for="fname">Prenom</label>
+			</div>
+			<div class="col-75">
+			  <input type="text" id="alphaPrenom" 
+			  name="Prenom" 
+			  placeholder="Votre Prenom.." 
+			  required onkeyup="validate_alphaPrenom()">
+				<span id="wrong_alphaPrenom_alert" ></span>
+			
+			</div>
+		  </div>
+
+
+
+		  <div class="row">
+			<div class="col-25">
+			  <label for="lname">Email</label> 
+			</div>
+			<div class="col-75">
+			  <input type="text"
+				id="mail"
+				name="Email" 
+				placeholder="Votre Email.."
+				
+				required onkeyup="validate_mail()">
+				<span id="wrong_mail_alert"></span>
+			</div>
+
+		  </div>
+		   
+
+		
+				
+		  <div class="row">
+			<div class="col-25"> 
+			  <label for="lname">Num&eacute;ro de t&eacute;lephone</label>
+			</div>
+			<div class="col-75">
+			  
+			  <input type="text"
+			   id="phone"
+			   name="phone" 
+			   placeholder="Votre num&eacute;ro de t&eacute;lephone "
+			   required onkeyup="validate_phone()">
+
+			 
+			  <span id="wrong_phone_alert"></span>
+			</div>
+		  </div>
+
+
+
+	<div class="row">
+	  <div class="col-25">
+		<label for="country">Recherche d'emplois</label>
+	  </div>
+	  <div class="col-75">
+		<label class="switch" >
+		<input type="checkbox">
+		<span class="slider"></span>
+		</label>
+	  </div>
+	</div>
+
+
+	<div class="row">
+	  <div class="col-25">
+		<label for="subject">D&eacute;scriptions</label>
+	  </div>
+
+
+	
+	  <div class="col-75">
+		<div><textarea
+			 id="description" 
+			name="subject"
+		 placeholder="Write something.."
+		 style="height:200px"
+		 required onkeyup="validate_alphaDescription()"></textarea>
+		<span id="wrong_description_alert"></span>
+	</div>
+		
+	  </div>
+	  
+	</div>
+	<br>
+	<div class="row">
+	  <input type="submit" id="create" value="Enregistrer">
+	</div>
+	</form>
+  </div>
+  
+  
+
+		  </section>
+
+		
+		<!-- END #fh5co-footer -->
+		
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- masonry -->
+	<script src="js/jquery.masonry.min.js"></script>
+	<!-- MAIN JS -->
+	<script src="js/main.js"></script>
+	<script>
+		function myFunction() {
+		  // Declare variables
+		  var input, filter, table, tr, td, i, txtValue;
+		  input = document.getElementById("myInput");
+		  filter = input.value.toUpperCase();
+		  table = document.getElementById("myTable");
+		  tr = table.getElementsByTagName("tr");
+		
+		  // Loop through all table rows, and hide those who don't match the search query
+		  for (i = 0; i < tr.length; i++) {
+			td = tr[i].getElementsByTagName("td")[0];
+			if (td) {
+			  txtValue = td.textContent || td.innerText;
+			  if (txtValue.toUpperCase().indexOf(filter) > -1) {
+				tr[i].style.display = "";
+			  } else {
+				tr[i].style.display = "none";
+			  }
+			}
+		  }
+		}
+		</script>
+
+	</body>
+  <footer>
+    <%- include('./partials/footer2'); %>
+  </footer>
+
+
+</body>
+<script src="javascripts/style.js" type="text/javascript"></script>
+</html>

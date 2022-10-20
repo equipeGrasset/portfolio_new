@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <%- include('./partials/head2', { title: 'Users' }); %>
+ 
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+
+  <body>
+
+		
+
+	
+    <div class="header">
+        <a href="https://www.institut-grasset.qc.ca"><img src="images/IGR_logo_blac.jpg" alt="Present Free HTML5 Bootstrap Template"></a>
+        
+        <div class="header-right">
+            <nav class="header-right">
+                <div class="container-fluid">
+                   
+                  <ul class="nav navbar-nav">  
+                    <li class="dropdown"><a  class="active"class="dropdown-toggle" data-toggle="dropdown" href="#">Liste <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a   href="Liste-ADmin.html">Les admins </a></li>
+                        <li><a  class="active" href="Liste-Enseignant.html">Les ensiegnants</a></li>
+                        <li><a href="Liste-Etudiant-ADMIN.html">Tous les Etudiants</a></li>
+                        <li><a  href="Liste-EtudiantATT.html">Les etudiants en attente </a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown"><a  href="#" class="dropdown-toggle" data-toggle="dropdown" href="#">Profil <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a  href="Modifier-profil2.html">Modifier profile</a></li>
+                          <li><a href="Modifier-profil2-changer-pass.html">Changer le mot de passe </a></li>
+                          <li><a href="">Desactiver le compte</a></li>
+                        </ul>
+                      </li> 
+                    <li><a href="#">Deconnexion</a></li>
+                  </ul>
+                </div>
+              </nav>
+        </div>
+      </div>
+
+
+ 
+    <!-- END #fh5co-header -->
+    <div class="page-content2">
+
+        <h1 class="no-margin">Liste des ensiegnants</h1>
+
+        <h2 class="h4 is-gray is-normal is-sans-serif"> Promotion Été 2022</h2>
+            
+
+      </div>
+      <input type="text" id="myInput"  onkeyup="myFunction()"  placeholder="Search for names..">
+
+      <table id="myTable" >
+        <tr class="header">
+          <th style="width:60%;">Nom</th>
+          <th style="width:60%;">prenom</th>
+          <th style="width:60%;">NE</th>
+          <th style="width:40%;">programme</th>
+          <th style="width:40%;">Etat</th>
+          <th style="width:40%;"> <i class="fa fa-trash"></i> <a  href="register-enseignant.html">+ Ajouter ensiegnant</a> </th>
+
+         
+        </tr>
+        <tr>
+          <td>Alfreds</td>
+          <td>Futterkiste</td>
+          <td>2137056</td>
+          <td>Informatique</td>
+          
+          <td><label class="switch" >
+            <input type="checkbox">
+            <span class="slider"></span>
+          </label></td>
+          <td><button class="btn"><i class="fa fa-trash"></i> Supprimer</button></td>
+        </tr>
+    
+        <tr>
+            <td>Alfreds</td>
+            <td>Futterkiste</td>
+            <td>2137056</td>
+            <td>Informatique</td>
+             
+            <td><label class="switch" >
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label></td>
+              <td><button class="btn"><i class="fa fa-trash"></i> Supprimer</button></td>
+          </tr>
+
+
+          <tr>
+            <td>Alfreds</td>
+            <td>Futterkiste</td>
+            <td>2137056</td>
+            <td>Informatique</td>
+             
+            <td><label class="switch" >
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label></td>
+              <td><button class="btn"><i class="fa fa-trash"></i> Supprimer</button></td>
+          </tr>
+
+
+          <tr>
+            <td>Alfreds</td>
+            <td>Futterkiste</td>
+            <td>2137056</td>
+            <td>Informatique</td>
+             
+            <td><label class="switch" >
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label></td>
+              <td><button class="btn"><i class="fa fa-trash"></i> Supprimer</button></td>
+          </tr>
+
+
+          <tr>
+            <td>Alfreds</td>
+            <td>Futterkiste</td>
+            <td>2137056</td>
+            <td>Informatique</td>
+             
+            <td><label class="switch" >
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label></td>
+              <td><button class="btn"><i class="fa fa-trash"></i> Supprimer</button></td>
+          </tr>
+
+
+
+          <tr>
+            <td>Alfreds</td>
+            <td>Futterkiste</td>
+            <td>2137056</td>
+            <td>Informatique</td>
+             
+            <td><label class="switch" >
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label></td>
+              <td><button class="btn"><i class="fa fa-trash"></i> Supprimer</button></td>
+          </tr>
+        
+      </table>
+
+
+    
+    <!-- END .container-fluid -->
+
+    <footer id="fh5co-footer" role="contentinfo"  >
+        <div class="container-fluid">
+            <div class="footer-content">
+                <div class="copyright"><small><br>institut@grasset.qc.ca <br>220, Fairmount Ouest Montréal (Québec) H2T 2M7</div>
+                <div class="social">
+                    <a href="#"><i class="icon-facebook3"></i></a>
+                    <a href="#"><i class="icon-instagram2"></i></a>
+                    <a href="#"><i class="icon-linkedin2"></i></a>
+                </div>
+                <br> &copy;2022 Present. All Rights Reserved. </a></small>
+            </div>
+        </div>
+    </footer>
+    <!-- END #fh5co-footer -->
+    
+<!-- jQuery -->
+<script src="javascripts/js/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="javascripts/js/bootstrap.min.js"></script>
+<!-- masonry -->
+<script src="javascripts/js/jquery.masonry.min.js"></script>
+<!-- MAIN JS -->
+<script src="javascripts/js/main.js"></script>
+<script>
+    function myFunction() {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+    
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
+
+</body>
+ 
+  <script src="javascripts/style.js" type="text/javascript"></script>
+  </html>
