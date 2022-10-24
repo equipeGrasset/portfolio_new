@@ -73,116 +73,131 @@
   <body>
 
 		
-
 	<div class="header">
-		<a href="https://www.institut-grasset.qc.ca"><img src="images/IGR_logo_blac.jpg" alt="Present Free HTML5 Bootstrap Template"></a>
-		
-		
-	<div class="header-right">
+		<a href="https://www.institut-grasset.qc.ca">
+			<img src="img/IGR_logo_blac.jpg" alt="Present Free HTML5 Bootstrap Template">
+		</a>
+		<div class="header-right">
 	 
 
-		<nav class="header-right">
-			<div class="container-fluid">
-			  <div class="navbar-header">
-			  </div>
-			  <ul class="nav navbar-nav">
-				<li><a href="portfolio.html">Portfolio</a></li>
-				<li class="dropdown"><a class="active" href="#" class="dropdown-toggle" data-toggle="dropdown" href="#">Liste <span class="caret"></span></a>
-				  <ul class="dropdown-menu">
-					<li><a class="active" href="Liste-elemnts.html">Liste des elements</a></li>
-					<li><a href="AjouterElm.html">Ajouter element</a></li>
+			<nav class="header-right">
+				<div class="container-fluid">
+				  <div class="navbar-header">
+				  </div>
+				  <ul class="nav navbar-nav">
+					<li><a href="portfolio.html">Portfolio</a></li>
+					<li class="dropdown"><a  class="active" href="#" class="dropdown-toggle" data-toggle="dropdown" href="#">Liste <span class="caret"></span></a>
+					  <ul class="dropdown-menu">
+						<li><a href="Liste-elemnts.html">Liste des &eacute;lements</a></li>
+						<li><a class="active"  href="AjouterElm.html">Ajouter &eacute;lement</a></li>
+					  </ul>
+					</li>
+					<li class="dropdown"><a   href="#" class="dropdown-toggle" data-toggle="dropdown" href="#">Profil <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+						  <li><a href="Modifier-profil.html">Modifier profile</a></li>
+						  <li><a  href="Modifier-profil-changer-pass.html">Changer le mot de passe </a></li>
+						  <li><a href="">Desactiver le compte</a></li>
+						</ul>
+					  </li> 
+					<li><a href="#">D&eacute;connexion</a></li>
 				  </ul>
-				</li>
-			 
-				<li><a href="Modifier-profil.html">Profil</a></li>
-				<li><a href="#">Deconnexion</a></li>
-			  </ul>
-			</div>
-		  </nav>
+				</div>
+			  </nav>
+		</div>
 	  </div>
-	  </div>
-
- 
-	<!-- END #fh5co-header -->
-	<div class="page-content2">
-
-		<h1 class="no-margin">Liste des elements</h1>
-			
-
-	  </div>
-	  <input type="text" id="myInput"  onkeyup="myFunction()"  placeholder="Search for names..">
-
-	  <table id="myTable" >
-		<tr class="header">
-			<th style="width:10%;">ID</th>
-		  <th style="width:80%;">Titre</th>
-		  <th style="width:40%;"></th>
-		  <th style="width:40%;"></th>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>prjet</td> 
-			<td><button class="btn"><i class="fa fa-folder"></i> Modifier</button></td>
-			<td><button class="btn"><i class="fa fa-trash"></i> Supprimer</button></td>
-		  </tr>
 
 	
-		<tr>
-			<td>2</td>
-			<td>prjet</td> 
-			<td><button class="btn"><i class="fa fa-folder"></i> Modifier</button></td>
-			<td><button class="btn"><i class="fa fa-trash"></i> Supprimer</button></td>
-		  </tr>
+ 
+	
+	  <div>
 
+	  </div>
 
-		  <tr>
-			<td>3</td>
-			<td>prjet</td> 
-			<td><button class="btn"><i class="fa fa-folder"></i> Modifier</button></td>
-			<td><button class="btn"><i class="fa fa-trash"></i> Supprimer</button></td>
-		  </tr>
+	  <section>
 
-
-
-		  <tr>
-			<td>4</td>
-			<td>prjet</td> 
-			<td><button class="btn"><i class="fa fa-folder"></i> Modifier</button></td>
-			<td><button class="btn"><i class="fa fa-trash"></i> Supprimer</button></td>
-		  </tr>
-
-
-
-		  <tr>
-			<td>5</td>
-			<td>prjet</td> 
-			<td><button class="btn"><i class="fa fa-folder"></i> Modifier</button></td>
-			<td><button class="btn"><i class="fa fa-trash"></i> Supprimer</button></td>
-		  </tr>
-
-
-
-		  <tr>
-			<td>6</td>
-			<td>prjet</td> 
-			<td><button class="btn"><i class="fa fa-folder"></i> Modifier</button></td>
-			<td><button class="btn"><i class="fa fa-trash"></i> Supprimer</button></td>
-		  </tr>
-
-		  <tr>
-			<td>7</td>
-			<td>prjet</td> 
-			<td><button class="btn"><i class="fa fa-folder"></i> Modifier</button></td>
-			<td><button class="btn"><i class="fa fa-trash"></i> Supprimer</button></td>
-		  </tr>
-
+		<div class="row">
+			
+			<div class="container">
+				
+				<h1>Ajouter un element</h1>
+				 </div>
+		  </div>
 		
-	  </table>
+		  <div class="container">
+			<form action="/ajout_elem" method="post" >
+			 
+			
+			<div class="row">
+				<div class="col-25">
+				  <label for="fname">Titre du pojet</label>
+				</div>
+				<div class="col-75">
+					<input type="text"  
+					name="name"
+					id= "alphaNom"
+					placeholder="Votre Nom.." 
+					required onkeyup="validate_alphaNom()">
+				   <span id="wrong_nom_alert" ></span>  
+				</div>
+			  </div>
+			
+			  <div class="row">
+				<div class="col-25">
+				  <label for="fname">File:</label>
+				</div>
+				<div class="col-75">
+					<input type="file" id="myfile" name="myfile">
+				   <span id="wrong_nom_alert" ></span>  
+				</div>
+			  </div>
+			
+		
+
+			  <div class="row">
+				<div class="col-25">
+				  <label for="fname">Lien vers :</label>
+				</div>
+				  
+				<input type="text"
+				id="lien"
+				name="url" 
+				placeholder="http:// " >
+ 
+			  
+			   <span id="wrong_lien_alert"></span>
+			 </div>
+		   
+ 
+		
+<div class="row">
+	<div class="col-25">
+	  <label for="subject">D&eacute;scriptions</label>
+	</div>
+
+
+	<div class="col-75">
+	  <div><textarea
+		   id="description" 
+		  name="description"
+	   placeholder="Write something.."
+	   style="height:200px"
+	   required onkeyup="validate_alphaDescription()"></textarea>
+	  <span id="wrong_description_alert"></span>
+  </div>
+			 
+			 
+			<br>
+			<div class="row">
+			  <input type="submit" id="create" value="Enregistrer">
+			</div>
+			</form>
+		  </div>
+
+	  </section>
 
 	
 	<!-- END .container-fluid -->
-
-	<footer id="fh5co-footer" role="contentinfo"  >
+	<footer id="fh5co-footer2" role="contentinfo" >
 		<div class="container-fluid">
 			<div class="footer-content">
 				<div class="copyright"><small><br>institut@grasset.qc.ca <br>220, Fairmount Ouest Montréal (Québec) H2T 2M7</div>

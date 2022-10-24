@@ -71,7 +71,7 @@
             </div>
             <div class="container text-center">
                 <div id="fh5co-logo">
-                    <a href="index2.html"><img src="img/logo-portfolio.png" alt="Present Free HTML5 Bootstrap Template"></a>
+                    <a href="#"><img src="img/logo-portfolio.png" alt="Present Free HTML5 Bootstrap Template"></a>
                 </div>
             
             </div>
@@ -97,89 +97,25 @@
                                         <li><a href="#porfolio_menu" data-filter=".responsive">Animation 3D</a></li>
                                     </ul>
                                 </div>
+
                                 <div class="portfolio_content">
+                                    <% for(i=0; i<resultat.length; i++) { %>
                                     <div class="row" id="portfolio" style="position: relative; height: 1176px;">
                                         <div class="col-xs-12 col-sm-4 appsDevelopment" style="position: absolute; left: 0px; top: 0px;">
                                             <div class="portfolio_single_content">
-                                                <img src="img/portfolio/p1.jpg" alt="title">
+                                                <img src="<%= resultat[i].student_photo %>" alt="title">
                                                 <div>
-                                                    <a href="portfolio.html">Skull Awesome</a>
-                                                    <span>Subtitle</span>
+                                                    <a href="portfolio-vistuer"><%= resultat[i].student_name %> </a>
+                                                    <span><%= resultat[i].student_program %></span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-xs-12 col-sm-4 GraphicDesign" style="position: absolute; left: 390px; top: 0px;">
-                                            <div class="portfolio_single_content">
-                                                <img src="img/portfolio/p2.jpg" alt="title">
-                                                <div>
-                                                    <a href="#">Photo Frame</a>
-                                                    <span>Subtitle</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-4 responsive" style="position: absolute; left: 780px; top: 0px;">
-                                            <div class="portfolio_single_content">
-                                                <img src="img/portfolio/p3.jpg" alt="title">
-                                                <div>
-                                                    <a href="#">Hand Shots</a>
-                                                    <span>Subtitle</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-4 webDesign websites" style="position: absolute; left: 0px; top: 392px;">
-                                            <div class="portfolio_single_content">
-                                                <img src="img/portfolio/p4.jpg" alt="title">
-                                                <div>
-                                                    <a href="#">Night Abstract</a>
-                                                    <span>Subtitle</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-4 appsDevelopment websites" style="position: absolute; left: 390px; top: 392px;">
-                                            <div class="portfolio_single_content">
-                                                <img src="img//portfolio/p5.jpg" alt="title">
-                                                <div>
-                                                    <a href="#">Joy of Independence</a>
-                                                    <span>Subtitle</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-4 GraphicDesign" style="position: absolute; left: 780px; top: 392px;">
-                                            <div class="portfolio_single_content">
-                                                <img src="img/portfolio/p6.jpg" alt="title">
-                                                <div>
-                                                    <a href="#">Night Crawlers</a>
-                                                    <span>Subtitle</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-4 responsive" style="position: absolute; left: 0px; top: 784px;">
-                                            <div class="portfolio_single_content">
-                                                <img src="img/portfolio/p7.jpg" alt="title">
-                                                <div>
-                                                    <a href="#">Last Motel</a>
-                                                    <span>Subtitle</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-4 GraphicDesign" style="position: absolute; left: 390px; top: 784px;">
-                                            <div class="portfolio_single_content">
-                                                <img src="img/portfolio/p8.jpg" alt="title">
-                                                <div>
-                                                    <a href="#">Dirk Road</a>
-                                                    <span>Subtitle</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-4 websites" style="position: absolute; left: 780px; top: 784px;">
-                                            <div class="portfolio_single_content">
-                                                <img src="img/portfolio/p9.jpg" alt="title">
-                                                <div>
-                                                    <a href="#">Old is Gold</a>
-                                                    <span>Subtitle</span>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <% } %>
+                                        
+                                          
+                                        
+                                        
+                                       
                                     </div>
                                 </div>
                             </div>
