@@ -21,10 +21,10 @@
 				  <ul class="nav navbar-nav">  
 					<li class="dropdown"><a  class="active"class="dropdown-toggle" data-toggle="dropdown" href="#">Liste <span class="caret"></span></a>
 					  <ul class="dropdown-menu">
-						<li><a   href="admin-lise_admins">Les admins </a></li>
-						<li><a   href="admin-lise_Ensg">Les ensiegnants</a></li>
-						<li><a  href="admin-lise_Etud">Tous les Etudiants</a></li>
-						<li><a  class="active" href="admin-lise_EtudATT">Les etudiants en attente </a></li>
+						<li><a   href="Liste-ADmin.html">Les admins </a></li>
+						<li><a   href="Liste-Enseignant.html">Les ensiegnants</a></li>
+						<li><a  href="Liste-Etudiant-ADMIN.html">Tous les Etudiants</a></li>
+						<li><a  class="active" href="Liste-EtudiantATT.html">Les etudiants en attente </a></li>
 					  </ul>
 					</li>
 					<li class="dropdown"><a  href="#" class="dropdown-toggle" data-toggle="dropdown" href="#">Profil <span class="caret"></span></a>
@@ -34,8 +34,8 @@
 						  <li><a href="">Desactiver le compte</a></li>
 						</ul>
 					  </li> 
-					  <li><form method="post" action="/logout" ><button class="button2" type="submit">D&eacute;connexion</button></form></li>  
-					</ul>
+					<li><a href="#">Deconnexion</a></li>
+				  </ul>
 				</div>
 			  </nav>
 		</div>
@@ -63,30 +63,81 @@
 		  <th style="width:40%;">programme</th>
 		  <th style="width:40%;">Etat</th>
 		</tr>
+		<tr>
+		  <td>Alfreds</td>
+		  <td>Futterkiste</td>
+		  <td>2137056</td>
+		  <td>Informatique</td>
+		  <td><label class="switch" >
+			<input type="checkbox">
+			<span class="slider"></span>
+		  </label></td>
+		
+		</tr>
 	
-		
-		<% for(i=0; i<resultat.length; i++) { %>
-			<tr>
-			  <td><%= resultat[i].student_name %></td>
-			  <td><%= resultat[i].student_surname %></td>
-			  <td><%= resultat[i].student_id %></td>
-			  <td><%= resultat[i].student_program %></td>
-			  <td><label class="switch" >
-				<input type="checkbox">
-				<span class="slider"></span>
-				</label></td> 
-			   
-			  <td><button class="btn"><i class="fa fa-trash"></i> Supprimer</button></td>
-			</tr>
-		 
-		
-			<% } %>
-		
-		</table>
+		<tr>
+			<td>Alfreds</td>
+			<td>Futterkiste</td>
+			<td>2137056</td>
+			<td>Informatique</td>
+			<td><label class="switch" >
+			  <input type="checkbox">
+			  <span class="slider"></span>
+			</label></td>
+			
+		  </tr>
 
-		 
 
-		 
+		  <tr>
+			<td>Alfreds</td>
+			<td>Futterkiste</td>
+			<td>2137056</td>
+			<td>Informatique</td>
+			<td><label class="switch" >
+			  <input type="checkbox">
+			  <span class="slider"></span>
+			</label></td>
+			
+		  </tr>
+
+
+		  <tr>
+			<td>Alfreds</td>
+			<td>Futterkiste</td>
+			<td>2137056</td>
+			<td>Informatique</td>
+			<td><label class="switch" >
+			  <input type="checkbox">
+			  <span class="slider"></span>
+			</label></td>
+		
+		  </tr>
+
+
+		  <tr>
+			<td>Alfreds</td>
+			<td>Futterkiste</td>
+			<td>2137056</td>
+			<td>Informatique</td>
+			<td><label class="switch" >
+			  <input type="checkbox">
+			  <span class="slider"></span>
+			</label></td>
+			
+		  </tr>
+
+
+
+		  <tr>
+			<td>Alfreds</td>
+			<td>Futterkiste</td>
+			<td>2137056</td>
+			<td>Informatique</td>
+			<td><label class="switch" >
+			  <input type="checkbox">
+			  <span class="slider"></span>
+		
+		  </tr>
 		
 	  </table>
 
@@ -97,7 +148,11 @@
 		<div class="container-fluid">
 			<div class="footer-content">
 				<div class="copyright"><small><br>institut@grasset.qc.ca <br>220, Fairmount Ouest Montréal (Québec) H2T 2M7</div>
-			 
+				<div class="social">
+					<a href="#"><i class="icon-facebook3"></i></a>
+					<a href="#"><i class="icon-instagram2"></i></a>
+					<a href="#"><i class="icon-linkedin2"></i></a>
+				</div>
 				<br> &copy;2022 Present. All Rights Reserved. </a></small>
 			</div>
 		</div>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <%- include('./partials/head', { title: 'blablabla' }); %>
+    <link href="stylesheets/auth5.css" rel="stylesheet" type="text/css">
+
+    <!--encadrer-->
+    <style>
+    .encadrer_texte {
+    width: fit-content;
+    border: 2px solid rgb(219, 219, 219);
+    padding: 4px;
+    margin: 0px;
+    }
+    .box {
+        height: 300px;
+        margin-top: 0%;
+    }
+    </style>
+
+</head>
+
+<body>
+<img src="images/IGR_logo_blac.jpg" alt="Trulli" width="200" height="85" >
+
+<div id="tsparticles"></div>
+    <main class="box">
+        <h2>Création de Compte</h2>
+        <% if(msg) { %>  
+            <div style="margin: 0px 00px 30px 0px;">
+                <span style="color: green; font-weight: bold;">
+                    <%= msg %>
+                </span>
+            </div>
+        <%}%>
+        
+        <div style="margin: 2px 10px 20px 180px;">
+            <a class="button" href="login" style="float: left;">Retourner</a>
+        </div>
+    </main>
+<footer>
+    <%- include('./partials/footer'); %>
+</footer>
+
+
+</body>
+    <script src="javascripts/style.js" type="text/javascript"></script>
+</html>

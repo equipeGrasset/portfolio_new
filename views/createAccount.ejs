@@ -23,12 +23,12 @@
 <div id="tsparticles"></div>
     <main class="box">
         <h2>Inscription</h2>
-        <form method = "post" action="/createAccount">
+        <form method="POST" action="/createAccount">
             <div class="inputBox" style="margin: 10px 0px -10px 0px;">
-                <label for="username">Identifiant</label>
+                <label for="userId">Identifiant</label>
                 <input 
                     type="text" 
-                    name="username" 
+                    name="userId"
                     id="username" 
                     placeholder="Rentrez votre numéro DA " 
                     required onkeypress="validate_id()"/>
@@ -36,9 +36,9 @@
             <div style="margin: 0px 00px 10px 0px;"><span id="wrong_id_alert" ></span> </div>
 
             <div class="inputBox">
-                <label for="userName">Nom</label>
+                <label for="name">Nom</label>
                 <input type="text" 
-                    name="userName" 
+                    name="name" 
                     id="alphaNom" 
                     placeholder="Rentrez votre nom" 
                     required onkeypress="validate_alphaNom()"/>
@@ -46,14 +46,36 @@
             <div style="margin: 0px 00px 10px 0px;"><span id="wrong_nom_alert" ></span> </div>
 
             <div class="inputBox">
-                <label for="userSurName">Prénom</label>
+                <label for="surname">Prénom</label>
                 <input type="text" 
-                        name="userSurName" 
+                        name="surname" 
                         id="alphaPrenom" 
                         placeholder="Rentrez votre Prénom" 
                         required onkeypress="validate_alphaPrenom()"/>
             </div>
             <div style="margin: 0px 00px 10px 0px;"><span id="wrong_alphaPrenom_alert" ></span> </div>
+
+
+            <legend style="font-size: 17px; color:white ; ">Choisissez votre programme : </legend>
+                    <div class="inputBox">
+                        <div style="margin: 0px 00px 40px 0px;">
+                            <select id="programmes" name="programmes" style="margin: 10px 0px 0px 00px;">
+                                <option value="1">Techniques de l'informatique profil programmation nouveaux médias</option>
+                                <option value="2">Techniques d'inspection en bâtiment</option>
+                                <option value="3">Tech. de l'estimation et de l'éva. en bâtiment, spécialisation en est. en construction</option>
+                                <option value="4">Tech. de l'estimation et de l'évaluation en bâtiment, spécialisation en éval. immobilière</option>
+                                <option value="5">Composition et effets spéciaux pour vidéo numérique</option>
+                                <option value="6">Production 3D pour jeux vidéo</option>
+                                <option value="7">Production multimédia, profil web et médias sociaux</option>
+                                <option value="8">Production télévisuelle et cinématographique</option>
+                                <option value="9">Spécialiste en réalité virtuelle et augmentée</option>
+                                <option value="10">Techniques d'animation 3D et de synthèse d'images</option>
+                                <option value="11">Techniques de montage et d'habillage infographique</option>
+                                <option value="12">Techniques de production et de postproduction télévisuelles</option>
+                                <option value="13">Sténographie judiciaire</option>
+                            </select>
+                        </div>
+                    </div>  
 
 
             <div class="inputBox">
@@ -102,7 +124,13 @@
             </div>
 
 
-
+            <% if(msg) { %>
+                <div style="margin: 0px 00px 10px 0px;">
+                    <span style="color: red; font-weight: bold;">
+                        <%= msg %>
+                    </span>
+                </div>
+            <%}%>
 
 
 

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <%- include('./partials/head', { title: 'Users' }); %>
+    <%- include('./partials/head', { title: 'Administrateur' }); %>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
     <h1><%= title %></h1>
     <p>
-      Bienvenue <%= user %>
+      Bienvenue <%= username %> <%= usersurname %>
     </p>
     <form method="post" action="/logout">
       <p>
