@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', passport.authenticate('local', {
-    successRedirect: '/admin-lise_admins',
+    successRedirect: '/users',
     failureRedirect: '/login?fail=true'
 }))
 

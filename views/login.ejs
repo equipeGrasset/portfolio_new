@@ -1,69 +1,108 @@
-<!DOCTYPE html>
-<html lang="fr">
+    <!DOCTYPE html>
+    <html lang="fr">
 
-    <head>
-        <%- include('./partials/head', { title: 'Authentication' }); %>
-    </head>
+        <head>
+            <%- include('./partials/head', { title: 'Authentication' }); %>
+        </head>
 
-    <body>
-    <img src="images/IGR_logo_blac.jpg"alt="Trulli" width="200" height="85" >
+        <body>
+        <img src="images/IGR_logo_blac.jpg"alt="Trulli" width="200" height="85" >
 
-    <div id="tsparticles"></div>
-        <main class="box">
-            <h2>Connexion</h2>
-            <form method = "post" action="/login">
-                <div class="inputBox">
-                    <label for="username">Identifiant</label>
-                    <input 
-                        type="text" 
-                        name="username" 
-                        id="username" 
-                        placeholder="Rentrez votre identifiant " 
-                        required onkeyup="validate_id()"/>                
+        <div id="tsparticles"></div>
+            <main class="box">
+                <h2>Connexion</h2>
+                <form method="POST" action="/login">
+                    <div class="inputBox">
+                        <label for="username">Identifiant</label>
+                        <input 
+                            type="text" 
+                            name="username" 
+                            id="username" 
+                            placeholder="Rentrez votre identifiant " 
+                            required onkeyup="validate_id()"/>                
+                        </div>
+                        <div style="margin: 0px 00px 10px 0px;"><span id="wrong_id_alert" ></span> </div>
+
+                    <div class="inputBox">
+                        <label for="password">Mot de passe</label>
+                        <input 
+                            type="password"
+                            name="password"
+                            id="password" 
+                            placeholder="Rentrez votre mot de passe"
+                            required/>
                     </div>
-                    <div style="margin: 0px 00px 10px 0px;"><span id="wrong_id_alert" ></span> </div>
 
-                <div class="inputBox">
-                    <label for="password">Mot de passe</label>
-                    <input 
-                        type="password"
-                        name="password"
-                        id="password" 
-                        placeholder="Rentrez votre mot de passe"
-                        required/>
-                </div>
-
-                <% if(msg) { %>
-                    <div style="margin: 0px 00px 10px 0px;">
-                        <span style="color: red; font-weight: bold;">
-                            <%= msg %>
-                        </span>
+                    <% if(msg) { %>
+                        <div style="margin: 0px 00px 10px 0px;">
+                            <span style="color: red; font-weight: bold;">
+                                <%= msg %>
+                            </span>
+                        </div>
+                    <%}%>
+                    
+                    <div style="margin: 10px 10px 20px 105px;">
+                          <%  { %>   <input type="submit" style="float: left;" value="Se connecte" onclick="send('username')">   <%}%>
+                       <br />
+                     
                     </div>
-                <%}%>
-                
-                <div style="margin: 10px 10px 20px 105px;">
-                    <button type="submit" name="" style="float: left;">Se connecter</button><br />
-                    <br />
                     
-                </div>
-                
-                
-                <div class="mpoublie" , style="margin: 10px 10px 30px 102px;;"> 
-                        <a href="MotDePasseOublieQuestionSecrete.html" style="color:#03a9f4;">Mot de passe oublié ?</a>
-                </div>
-
-                <hr>
-
-                <div style="margin: 20px 10px 20px 91px;">
-                    <a class="button" href="studentCreateAccount" style="float: left;">Créer un compte</a>
                     
-                </div>
-                
-            </form>
-        </main>
+                    <div class="mpoublie" , style="margin: 10px 10px 30px 102px;;"> 
+                            <a href="forgottenPassword" style="color:#03a9f4;">Mot de passe oublié ?</a>
+                    </div>
+
+                    <hr>
+
+                    <div style="margin: 20px 10px 20px 91px;">
+                        <a class="button" href="createAccount" style="float: left;">Créer un compte</a>
+                        
+                    </div>
+                    
+                </form>
+            </main>
+            
         
-      
 
-    </body>
-    <script src="javascripts/style.js" type="text/javascript"></script>
-</html>
+
+        </body>
+        <script src="javascripts/style.js" type="text/javascript">
+            function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+    
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+            } else {
+            tr[i].style.display = "none";
+            }
+        }
+        }
+    }
+    
+    function send(id) {
+
+    let pointFinal = "admin-lise_Admin/" + id
+    fetch(
+    pointFinal, {method : "POST"}
+    ).then(
+    (reponse)=> reponse.json()
+    ).then(
+    (donnee)=> window.location.href = donnee.routeRacine
+    ).catch((erreur)=> console.log(erreur))
+
+    }
+
+
+
+        </script>
+    </html>

@@ -1,21 +1,25 @@
 var express = require('express');
 var router = express.Router();
+var db = require('../utils/db');
 
-/* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('studentCreateAccount', {}
-  // { 
-  //   user: req.user.user_id,
-  //   title: 'Express'
-  // }
-  )
+  if (req.query.fail) {
+    res.render('createAccount', { msg: "Impossible de créer le compte. Veuillez contacter votre administrateur système." });
+} else {
+    res.render('createAccount', { msg: null });
+}
 })
 
-router.post('/', function(req, res, next) {
-  if (req.query.fail) {
-    res.render('studentCreateAccount', { msg: "Il y a un problème dans la création d'utilisateur." });
-  } else {
-    res.render('login', {} );
+router.post('/', async function(req, res, next) {
+
+  const body = req.body;
+
+  try{
+    await db.createAccount(body);
+    res.render('accountCreated', { });
+  } catch (error) {
+    console.error(error);
+    res.render('createAccount', { msg: "Impossible de créer le compte. Veuillez contacter votre administrateur système." } );
   }
 }) 
 

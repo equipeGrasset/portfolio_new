@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <%- include('./partials/head', { title: 'Etudiants' }); %>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>
+      Bienvenue <%= username %> <%= usersurname %>
+    </p>
+    <form method="post" action="/logout">
+      <p>
+        <input type="submit" value="Logout">
+    </p>
+    </form>
+    <footer>
+      <%- include('./partials/footer'); %>
+    </footer>
+  </body>
+</html>

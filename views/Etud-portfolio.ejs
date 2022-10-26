@@ -21,17 +21,17 @@
 				  <div class="navbar-header">
 				  </div>
 				  <ul class="nav navbar-nav">
-					<li><a class="active" href="portfolio.html">Portfolio</a></li>
+					<li><a class="active" href="Etud-portfolio">Portfolio</a></li>
 					<li class="dropdown"><a  href="#" class="dropdown-toggle" data-toggle="dropdown" href="#">Liste <span class="caret"></span></a>
 					  <ul class="dropdown-menu">
-						<li><a href="Liste-elemnts.html">Liste des &eacute;lements</a></li>
-						<li><a href="AjouterElm.html">Ajouter &eacute;lement</a></li>
+						<li><a href="Etud-liste_elem">Liste des &eacute;lements</a></li>
+						<li><a href="Etud-ajout_elem">Ajouter &eacute;lement</a></li>
 					  </ul>
 					</li>
 					<li class="dropdown"><a  href="#" class="dropdown-toggle" data-toggle="dropdown" href="#">Profil <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-						  <li><a href="Modifier-profil.html">Modifier profile</a></li>
-						  <li><a  href="Modifier-profil-changer-pass.html">Changer le mot de passe </a></li>
+						  <li><a href="Etud-Mprofil">Modifier profile</a></li>
+						  <li><a  href="Etud-motPasse">Changer le mot de passe </a></li>
 						  <li><a href="">Desactiver le compte</a></li>
 						</ul>
 					  </li> 
@@ -56,31 +56,33 @@
     <div class="grid-child purple">
 		<div class="page-content">
 		<div class="myDiv"  >
-		<h1 class="no-margin">Alexandra Roy</h1>
-		<p><img src="images/user1.jpg"  style="left: 70px ;  width:300px;border-radius: 70%;" class="responsive"></p> 
-		<p>J’ai toujourpression of an idea through an image. My main interests are video games, scifi, fantasy, horror, mythology and astrology. 
-		Creative, curious and meticulomaster’s degree in visual arts taught me to target relevant information and prioritize tasks to achieve them and deliver quality work within tight deadlines. I have a good understanding of the basics in color theory and composition, as well as experience with Procreate, Photoshop, Illustrator and Autodesk Maya.</p>
+		<h1 class="no-margin"><%= username %> <%= usersurname %></h1>
+		<p><img src=<%= imagepath %> style="left: 70px ;  width:300px;border-radius: 70%;" class="responsive"></p> 
+		<p><%= bio %> </p>
+		<p>Contactez moi sur : </p>
+		<p>Email : <%= email %></p>
+		<p>Num&eacute;ro de t&eacute;lephone : <%= phone %></p>
+		<% if(statutemp == 1){ %>
+			<p style="color: rgb(255, 0, 0);">Je suis a la Recherche de travaille  </p>
+			<% } else{ %>  
+			<p> </p>
+			<% } %>	
 	</div>
+	
     </div>
 </div>
     <div class="grid-child green">
 		<div class="page-content">
-        <h1 class="mb0">CrabInvasion</h1>
-		<div class="meta"><span><a href="#">Packaging</a>, <a href="#">Illustration</a></span></div>
-		<p>Description du Projet Squid Game :
-			Dans le contexte du cours Animation 3D expérientielle, nous devions créer un mini jeu interactif dans un environnement virtuel à l’aide de logiciel 3D et autres. Ce projet a été conceptualisé de A à Z avec l’utilisation des logiciels tel que Maya 3D, Substance painter, Photoshop et Unreal engine. Tous les éléments du jeu ont été modélisés, animés et texturiser de A à Z.
-			L’environnement est basé sur la série “Squid Game” auquel le joueur doit atteindre un score pour gagner la partie. À l’aide d’un fusil, le joueur doit tirer sur des cibles situées sur des plateformes. À fur et à mesure que le joueur atteint un nombre de score, une nouvelle plateforme s’active avec des nouvelles cibles.  Le fusil contient des balles auquel il doit recharger avec une machine qui distribue un chargeur.
+		<div class="meta"><span><a href="#">Nome du projet</a></span></div>
+		
+        <h1 class="mb0"><%= projectName %></h1><br>
+		<p>Description du projet : <br> <br><%= projectDesc %>
 			</p>
 		<p><img src="images/exmp1.png" alt="portfolio"></p>
 		<p><img src="images/exmp1-3.png" alt="portfolio"></p>
-		<p><img src="images/exmp1-4.png" alt="portfolio"></p>
-		<p>Description du Projet Crab Invasion :</p>
-		<p>
-			Dans le cadre du cours en programmation C# et Unity, nous devions créer un jeu en réalité virtuel (choix libre) en équipe.
-			Crab invasion est un jeu de “Tower defense” dans un environnement interactif auquel le joueur doit défendre son château de sable sur une île envahit par des crabes durant la nuit. Pour défendre son château, le joueur à accès à une pelle et des noix de coco qui tombe des Cocotiers s'il rentre en collision avec l’arbre, par ailleurs, il peut utiliser une lampe de poche pour éclairer l’environnement. Les crabes font des dégâts à chaque seconde au château durant le temps qu’ils sont dans la boîte de collision. Pour gagner, le joueur devra éliminer tous les crabes sur l’île et réussir à défendre son château de sable.
-			</p>
-
-			<a href="https://www.youtube.com/watch?v=qsU4nM0L_n0">Lier vers le video complet</a>
+		<p><img src="images/exmp1-4.png" alt="portfolio"></p> 
+		
+		<a href=<%= projectUrl %>>Lier vers le video complet</a>
     </div>
 </div>
 </div>

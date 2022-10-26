@@ -9,7 +9,8 @@ router.get('/', function(req, res, next) {
       console.log(erreur);
       res.status(500).render("erreur", { erreur });
     } else {
-      connection.query("select * from students ", [], (erreur, resultat) => {
+      connection.query("SELECT s.student_name, s.student_surname,s.student_DA, u.program_name FROM students s INNER JOIN programs u ON s.`student_program` = u.program_id", [], (erreur, resultat) => {
+    
         if (erreur) {
           console.log(erreur);
         } else {

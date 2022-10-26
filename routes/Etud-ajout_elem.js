@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 
 module.exports = router;
 router.post("/ajout_elem", (req, res) => {
-  let id = req.body.id === "" ? null : req.body.id;
+  let id = req.body.id 
   let  = req.body.name;
   let portfolioId = req.body.portfolioId;
   let url = req.body.url; 
