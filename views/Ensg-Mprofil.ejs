@@ -129,8 +129,8 @@
 				  <input type="text"  
 				  id= "alphaNom"
 				  name="name"
-				  placeholder="Votre Nom.." 
-				  required onkeyup="validate_alphaNom()">
+				  required onkeyup="validate_alphaNom()"
+				  placeholder=<%= usersurname %> >
 				 <span id="wrong_nom_alert" ></span></div>
 				</div>
 				 
@@ -144,9 +144,9 @@
 				<div><div class="col-75" >
 
 					<input type="text" id="alphaPrenom" 
-					name="Prenom" 
-					placeholder="Votre Prenom.." 
-					required onkeyup="validate_alphaPrenom()">
+					name="Prenom" 			
+					required onkeyup="validate_alphaPrenom()"
+					placeholder=<%= username %>>
 				 <span id="wrong_nom_alert" ></span></div>
 				</div>
 				 
@@ -159,9 +159,9 @@
 				<input type="text"
 				  id="mail"
 				  name="email" 
-				  placeholder="Votre Email.."
-				  
-				  required onkeyup="validate_mail()">
+				  required onkeyup="validate_mail()"
+				  placeholder=<%= email %>
+				  >
 				  <span id="wrong_mail_alert"></span>
 			  </div>
 
@@ -175,8 +175,8 @@
 				  <input type="text"
 				   id="phone"
 				   name="phone" 
-				   placeholder="Votre num&eacute;ro de t&eacute;lephone "
-				   required onkeyup="validate_phone()">
+				   required onkeyup="validate_phone()"
+				   placeholder=<%= phone %>>
 	
 				 
 				  <span id="wrong_phone_alert"></span>

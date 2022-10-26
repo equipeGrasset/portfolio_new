@@ -3,10 +3,12 @@ var router = express.Router();
 var db = require('../utils/db');
 
 /* GET portfolio etudinat listing. */
-router.get('/', function(req, res, next) {
-  res.render('Ensg-Mprofil', { 
- 
-   
+router.get('/', async function(req, res, next) {
+  const user = req.user.user_id;
+  professor = await db.findProfessor(user);
+  res.render('Ensg-Mprofil', {
+    title: 'Enseignants' , usersurname: professor.professor_surname, username: professor.professor_name, email:professor.professor_email, phone: professor.professor_telephone
+    
   });
 });
 
