@@ -15,8 +15,14 @@ router.post('/', async function(req, res, next) {
   const body = req.body;
 
   try{
-    await db.createAccount(body);
-    res.render('accountCreated', { });
+    if (body.userRole === 2) {
+      await db.createProfessorAccount(body);
+      res.render('accountCreated', { });
+    }
+    if (body.userRole === 3) {
+      await db.createProfessorAccount(body);
+      res.render('accountCreated', { });
+    }
   } catch (error) {
     console.error(error);
     res.render('createAccount', { msg: "Impossible de créer le compte. Veuillez contacter votre administrateur système." } );
