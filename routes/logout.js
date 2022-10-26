@@ -9,11 +9,11 @@ router.post('/', (req, res) => {
         } else {
             res.clearCookie('connect.sid'); 
             console.log("User "  + req.user.username + " logged out.");
-            res.redirect('/');
+            res.redirect('/login');
         }
       });
     } else {
-      res.redirect('/');
+      res.redirect('/login');
     }
 })
 

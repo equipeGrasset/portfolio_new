@@ -33,7 +33,7 @@ router.delete("/admin-lise_Ensg/:id", (req, res) => {
     } else {
       connection.query(
         "DELETE FROM `professors` WHERE `employee_number` = ?",
-        [id],
+        [6064],
         (erreur, resultat) => {
           if (erreur) {
             console.log(erreur); 

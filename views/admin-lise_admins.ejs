@@ -64,13 +64,11 @@
         <td><%= resultat[i].administrator_name %></td>
         <td><%= resultat[i].administrator_surname %></td>
         <td><%= resultat[i].employee_number %></td> 
-     
+        
 
         
              <td ><input class="btn" type="button" value="Supprimer" onclick=""></td>
       </tr>
-
-   
 
     <% } %>
       
@@ -114,14 +112,9 @@
 
 </body>
  
-<footer id="fh5co-footer" role="contentinfo" >
-  <div class="container-fluid">
-    <div class="footer-content">
-      <div class="copyright"><small><br>institut@grasset.qc.ca <br>220, Fairmount Ouest Montréal (Québec) H2T 2M7</div>
-      
-      <br> &copy;2022 Present. All Rights Reserved. </a></small>
-    </div>
-  </div>
+<footer>
+  <%- include('./partials/footer'); %>
 </footer>
+
 <script src="javascripts/style.js" type="text/javascript"></script>
 </html>
