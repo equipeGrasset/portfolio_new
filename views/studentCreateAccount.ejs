@@ -100,14 +100,15 @@
             </div>
             <div style="margin: 0px 00px 10px 0px;"><span id='wrong_alphaQ2_alert'></span> </div>
             </div>
- 
+
+
+
+
+
 
             <div style="margin: 20px 10px 10px 195px;">
-                <button id="create"
-                        onclick="wrong_pass_alert()"  
-                        type="submit" >
-                    S'inscrire
-                </button>
+                <!-- <button id="create" value="createStudent" onclick="wrong_pass_alert()" type="submit" >S'inscrire</button> -->
+                <button id="create" value="createStudent" type="submit">S'inscrire</button>
                 <br/>
                 <br/>
             </div>
@@ -119,8 +120,11 @@
             
         </form>
     </main>
- 
+    <footer>
+        <%- include('./partials/footer'); %>
+    </footer>
+
 
 </body>
-<script src="javascripts/style.js" type="text/javascript"></script>
+    <script src="javascripts/style.js" type="text/javascript"></script>
 </html>
