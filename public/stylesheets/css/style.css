@@ -12,7 +12,7 @@
 *
 * ======================================================= */
 body {
-  font-family: "Roboto", Arial, serif;
+  font-family: "Roboto", Arial ,Bold, serif;
   line-height: 1.8;
   font-size: 16px;
   background: #fff;
@@ -22,8 +22,30 @@ body {
 
 
 }
+.popup {
+  width: 33.333333%;
+  padding: 15px;
+  left: 0;
+  margin-left: 33.333333%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: white;
+  position: absolute;
+  top: 15%;
+  box-shadow: 5px 5px 5px #000;
+  z-index: 10001;
+}
 
-
+.button2 {
+  background-color: #ffffff; /* Green */
+  border: none;
+  color: rgb(187, 47, 47);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
 
 
 .btn {
@@ -621,25 +643,30 @@ figure {
 }
 
 #fh5co-footer {
-  float: left;
-  width: 100%; 
-  position: absolute; bottom: 0;
-  background: #000000;
+	float: left;
+	width: 100%; 
+	position: relative;
+	background: #000000; 
+	text-align: center;
+	color: #999999;
   padding-top: 20px;
   padding-bottom: 20px;
-  text-align: center;
-  color: #999999;
-}
-
+  left: 0;
+	bottom: 0; 
+  }
 
 #fh5co-footer2 {
-  float: left;
-  width: 100%;  
-  background: #000000;
+	float: left;
+	width: 100%; 
+	position: relative;
+	background: #000000; 
+	text-align: center;
+	color: #999999;
   padding-top: 20px;
   padding-bottom: 20px;
-  text-align: center;
-  color: #999999;
+  left: 0;
+	bottom: 0; 
+  
 }
 
 #fh5co-footer a {
@@ -655,7 +682,7 @@ figure {
   padding: 10px;
   color: #999999 !important;
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 80px) {
   #fh5co-footer .social a {
     padding: 5px;
   }
