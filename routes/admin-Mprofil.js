@@ -5,12 +5,11 @@ var db = require('../utils/db');
 /* GET portfolio etudinat listing. */
 
 
-  router.get('/', function(req, res, next) {
-    if (req.query.fail) {
-      res.render('admin-Mprofil', {});
-  } else {
-      res.render('admin-Mprofil', { msg: "Done" });
-  }
+  router.get('/',async function(req, res, next) {
+    admin = await db.findAdmin(req.user.user_id);
+    res.render('admin-Mprofil', {
+      title: 'Admins' , usersurname: admin.administrator_surname, username: admin.administrator_name, email: admin.administrator_email, phone: admin.administrator_telephone
+    });
   })
 
 router.post('/', async function(req, res, next) {
