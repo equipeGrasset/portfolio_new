@@ -1,20 +1,19 @@
- 
 function validate_id() 
 { 
-var id = document.getElementById('id').value;
+var id = document.getElementById('username').value;
 
     if (!/^[0-9]+$/.test(id)) 
     {
             document.getElementById('wrong_id_alert').style.color = 'red';
             document.getElementById('wrong_id_alert').style["font-weight"] = "bold";
-            document.getElementById('wrong_id_alert').innerHTML = '☒ Votre identifiant doit doit être composé que de chiffres';
+            document.getElementById('wrong_id_alert').innerHTML = '☒ Votre identifiant doit être composé que de chiffres';
             document.getElementById('create').disabled = true;
             document.getElementById('create').style.opacity = (0.4);
 
     } 
     else 
     {
-        document.getElementById('wrong_id_alert').style.color = 'green';
+            document.getElementById('wrong_id_alert').style.color = 'green';
             document.getElementById('wrong_id_alert').style["font-weight"] = "bold";
             document.getElementById('wrong_id_alert').style["font-size"] = "16px";
             document.getElementById('wrong_id_alert').innerHTML = '';
@@ -28,7 +27,7 @@ function validate_alphaNom()
 { 
 var alphaNom = document.getElementById('alphaNom').value;
 
-    if (!/^[a-zA-Z\-]+$/.test(alphaNom)) 
+    if (!/^[a-zA-Z\- ]+$/.test(alphaNom)) 
     {
         document.getElementById('wrong_nom_alert').style.color = 'red';
         document.getElementById('wrong_nom_alert').style["font-weight"] = "bold";
@@ -52,7 +51,7 @@ function validate_alphaPrenom()
 { 
 var alphaPrenom = document.getElementById('alphaPrenom').value;
 
-    if (!/^[a-zA-Z\-]+$/.test(alphaPrenom)) 
+    if (!/^[a-zA-Z\- ]+$/.test(alphaPrenom)) 
     {
         document.getElementById('wrong_alphaPrenom_alert').style.color = 'red';
         document.getElementById('wrong_alphaPrenom_alert').style["font-weight"] = "bold";
@@ -75,7 +74,7 @@ var alphaPrenom = document.getElementById('alphaPrenom').value;
 
 function validate_password() 
 { 
-var pass = document.getElementById('pass').value;
+var pass = document.getElementById('password').value;
 var confirm_pass = document.getElementById('confirm_pass').value;
 
 if (pass.match( /[0-9]/g) && pass.match( /[A-Z]/g) && pass.match(/[a-z]/g) && pass.length >= 8) 
@@ -115,7 +114,7 @@ function validate_alphaQ1()
 { 
     var alphaQ1 = document.getElementById('alphaQ1').value;
 
-    if (!/^[a-zA-Z\-]+$/.test(alphaQ1)) 
+    if (!/^[a-zA-Z\- ]+$/.test(alphaQ1)) 
     {
         document.getElementById('wrong_alphaQ1_alert').style.color = 'red';
         document.getElementById('wrong_alphaQ1_alert').style["font-weight"] = "bold";
@@ -139,7 +138,7 @@ function validate_alphaQ2()
 { 
     var alphaQ2 = document.getElementById('alphaQ2').value;
 
-    if (!/^[a-zA-Z\-]+$/.test(alphaQ2)) 
+    if (!/^[a-zA-Z\- ]+$/.test(alphaQ2)) 
     {
         document.getElementById('wrong_alphaQ2_alert').style.color = 'red';
         document.getElementById('wrong_alphaQ2_alert').style["font-weight"] = "bold";
@@ -157,4 +156,36 @@ function validate_alphaQ2()
         document.getElementById('create').disabled = false;
         document.getElementById('create').style.opacity = (1);
     }    
+}
+
+function showTypeRole(){
+	
+	var userRole = document.getElementById('userRole').value;
+	
+	if (userRole === '2')
+	{
+		formDivOptions.style.display = 'block';
+		document.getElementById('numeroEmployee').style.display = 'block';
+		document.getElementById('divName').style.display = 'block';
+		document.getElementById('divSurname').style.display = 'block';
+		document.getElementById('profSelectionProgramme').style.display = 'block';
+		document.getElementById('divTelefone').style.display = 'block';
+		document.getElementById('divEmail').style.display = 'block';
+		document.getElementById('divPassword').style.display = 'block';
+		document.getElementById('divSecreteQuestion').style.display = 'block';
+		document.getElementById('divButtonValider').style.display = 'block';
+	}
+	if (userRole ==='3')
+	{
+		formDivOptions.style.display = 'block';
+		document.getElementById('numeroEmployee').style.display = 'block';
+		document.getElementById('divName').style.display = 'block';
+		document.getElementById('divSurname').style.display = 'block';
+		document.getElementById('profSelectionProgramme').style.display = 'none';
+		document.getElementById('divTelefone').style.display = 'block';
+		document.getElementById('divEmail').style.display = 'block';
+		document.getElementById('divPassword').style.display = 'block';
+		document.getElementById('divSecreteQuestion').style.display = 'block';
+		document.getElementById('divButtonValider').style.display = 'block';
+	}
 }
