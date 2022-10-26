@@ -124,62 +124,19 @@
 		  <th style="width:40%;"></th>
 		  <th style="width:40%;"></th>
 		</tr>
-		<tr>
-			<td>1</td>
-			<td>prjet</td> 
-			<td><button class="btn"><i class="fa fa-folder"></i> Modifier</button></td>
-			<td><button class="btn"><i class="fa fa-trash"></i> Supprimer</button></td>
-		  </tr>
+		 
 
-	
-		<tr>
-			<td>2</td>
-			<td>prjet</td> 
-			<td><button class="btn"><i class="fa fa-folder"></i> Modifier</button></td>
-			<td><button class="btn"><i class="fa fa-trash"></i> Supprimer</button></td>
-		  </tr>
-
-
-		  <tr>
-			<td>3</td>
-			<td>prjet</td> 
-			<td><button class="btn"><i class="fa fa-folder"></i> Modifier</button></td>
-			<td><button class="btn"><i class="fa fa-trash"></i> Supprimer</button></td>
-		  </tr>
-
-
-
-		  <tr>
-			<td>4</td>
-			<td>prjet</td> 
-			<td><button class="btn"><i class="fa fa-folder"></i> Modifier</button></td>
-			<td><button class="btn"><i class="fa fa-trash"></i> Supprimer</button></td>
-		  </tr>
-
-
-
-		  <tr>
-			<td>5</td>
-			<td>prjet</td> 
-			<td><button class="btn"><i class="fa fa-folder"></i> Modifier</button></td>
-			<td><button class="btn"><i class="fa fa-trash"></i> Supprimer</button></td>
-		  </tr>
-
-
-
-		  <tr>
-			<td>6</td>
-			<td>prjet</td> 
-			<td><button class="btn"><i class="fa fa-folder"></i> Modifier</button></td>
-			<td><button class="btn"><i class="fa fa-trash"></i> Supprimer</button></td>
-		  </tr>
-
-		  <tr>
-			<td>7</td>
-			<td>prjet</td> 
-			<td><button class="btn"><i class="fa fa-folder"></i> Modifier</button></td>
-			<td><button class="btn"><i class="fa fa-trash"></i> Supprimer</button></td>
-		  </tr>
+		<% for(i=0; i<resultat.length; i++) { %>
+			<tr>
+			  <td><%= resultat[i].project_id %></td>
+			  <td><%= resultat[i].project_name %></td>
+			  <td><button class="btn"><i class="fa fa-folder"></i> Modifier</button></td>
+			  <td><button class="btn"><i class="fa fa-trash"></i> Supprimer</button></td>
+	  
+			  
+			</tr>
+	  
+		  <% } %>
 
 		
 	  </table>
