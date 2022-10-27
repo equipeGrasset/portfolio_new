@@ -20,7 +20,7 @@ router.post('/', async function(req, res, next) {
       res.render('accountCreated', { });
     }
     if (body.userRole === '3') {
-      await db.createProfessorAccount(body);
+      await db.createAdminAccount(body);
       res.render('accountCreated', { });
     }
   } catch (error) {
