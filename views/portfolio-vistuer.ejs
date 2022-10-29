@@ -1,184 +1,196 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <%- include('./partials/head2', { title: 'Users' }); %>
- 
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+<head>
+  <%- include('./partials/head2', { title: 'Users' }); %>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+  <header id="fh5co-header" role="banner">
+    <div id="fh5co-logo">
+      <a href="https://www.institut-grasset.qc.ca">
+        <img src="/img/IGR_logo_blac.jpg" alt="Present Free HTML5 Bootstrap Template">
+      </a>
+      <div class="header-right">
+        <nav class="header-right">
+          <div class="container-fluid">
+            <div class="navbar-header">
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="dropdown"><a class="active" href="#" class="dropdown-toggle" data-toggle="dropdown"
+                  href="#">Programmes <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li id="menu-item-1444"
+                    class="menu-item menu-item-type-post_type_archive menu-item-object-programmes current-menu-item menu-item-1444">
+                    <a href="https://www.institut-grasset.qc.ca/programmes/" aria-current="page">Tous les programmes</a>
+                  </li>
+                  <li id="menu-item-1414"
+                    class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1414"><a
+                      href="https://www.institut-grasset.qc.ca/programmes/aec-specialiste-en-realite-virtuelle-et-augmentee-ntl-1k/">Spécialiste
+                      en réalité virtuelle et augmentée</a></li>
+                  <li id="menu-item-1415"
+                    class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1415"><a
+                      href="https://www.institut-grasset.qc.ca/programmes/dec-en-techniques-de-production-et-de-postproduction-televisuelles-589-ab/">Techniques
+                      de production et de postproduction télévisuelles</a></li>
+                  <li id="menu-item-1416"
+                    class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1416"><a
+                      href="https://www.institut-grasset.qc.ca/programmes/aec-en-composition-et-effets-speciaux-pour-video-numerique-nwy-16/">Composition
+                      et effets spéciaux pour vidéo numérique</a></li>
+                  <li id="menu-item-1417"
+                    class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1417"><a
+                      href="https://www.institut-grasset.qc.ca/programmes/aec-en-techniques-de-montage-et-dhabillage-infographique-nwy-00/">Techniques
+                      de montage et d’habillage infographique</a></li>
+                  <li id="menu-item-1418"
+                    class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1418"><a
+                      href="https://www.institut-grasset.qc.ca/programmes/aec-en-production-televisuelle-et-cinematographique-nwy-15/">Production
+                      télévisuelle et cinématographique</a></li>
+                  <li id="menu-item-1419"
+                    class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1419"><a
+                      href="https://www.institut-grasset.qc.ca/programmes/dec-en-techniques-de-linformatique-profil-programmation-nouveaux-medias-420-b0/">Techniques
+                      de l’informatique profil programmation nouveaux médias</a></li>
+                  <li id="menu-item-1420"
+                    class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1420"><a
+                      href="https://www.institut-grasset.qc.ca/programmes/aec-en-production-multimedia-profil-web-et-medias-sociaux-nwe-1a/">Production
+                      multimédia, profil web et médias sociaux</a></li>
+                  <li id="menu-item-1421"
+                    class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1421"><a
+                      href="https://www.institut-grasset.qc.ca/?post_type=programmes&amp;p=424">BIM pour l’estimation en
+                      construction</a></li>
+                  <li id="menu-item-1422"
+                    class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1422"><a
+                      href="https://www.institut-grasset.qc.ca/programmes/aec-en-techniques-dinspection-en-batiment-eec-13/">Techniques
+                      d’inspection en bâtiment</a></li>
+                  <li id="menu-item-1423"
+                    class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1423"><a
+                      href="https://www.institut-grasset.qc.ca/programmes/dec-en-technologie-de-lestimation-et-de-levaluation-en-batiment-voie-de-specialisation-en-estimation-en-construction-221-da/">Technologie
+                      de l’estimation et de l’évaluation en bâtiment, spécialisation en estimation en construction</a>
+                  </li>
+                  <li id="menu-item-1424"
+                    class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1424"><a
+                      href="https://www.institut-grasset.qc.ca/programmes/technologie-de-lestimation-et-de-levaluation-en-batiment-voie-de-specialisation-en-evaluation-immobiliere/">Technologie
+                      de l’estimation et de l’évaluation en bâtiment, spécialisation en évaluation immobilière</a></li>
+                  <li id="menu-item-1426"
+                    class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1426"><a
+                      href="https://www.institut-grasset.qc.ca/programmes/techniques-danimation-3d-et-de-synthese-dimages/">Techniques
+                      d’animation 3D et de synthèse d’images</a></li>
+                  <li id="menu-item-1427"
+                    class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1427"><a
+                      href="https://www.institut-grasset.qc.ca/programmes/production-3d-pour-jeux-video/">Production 3D
+                      pour jeux vidéo</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a class="active" href="#" class="dropdown-toggle" data-toggle="dropdown"
+                  href="#">Formation en entreprise <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li id="menu-item-1474"
+                    class="menu-item menu-item-type-post_type_archive menu-item-object-formations menu-item-1474"><a
+                      href="https://www.institut-grasset.qc.ca/formations/">Voir tous les types de formations</a></li>
+                  <li id="menu-item-2451"
+                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2451"><a
+                      href="https://www.institut-grasset.qc.ca/type-formation/batiment/">Bâtiment</a></li>
+                  <li id="menu-item-2452"
+                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2452"><a
+                      href="https://www.institut-grasset.qc.ca/type-formation/television/">Cinéma et télévision</a></li>
+                  <li id="menu-item-1467"
+                    class="menu-item menu-item-type-taxonomy menu-item-object-type-formation menu-item-1467"><a
+                      href="https://www.institut-grasset.qc.ca/type-formation/site-web-et-applications-mobiles/">Web et
+                      applications mobiles</a></li>
+                  <li id="menu-item-1468"
+                    class="menu-item menu-item-type-taxonomy menu-item-object-type-formation menu-item-1468"><a
+                      href="https://www.institut-grasset.qc.ca/type-formation/bureautique-et-teletravail/">Télétravail
+                      et bureautique</a></li>
+                  <li id="menu-item-1469"
+                    class="menu-item menu-item-type-taxonomy menu-item-object-type-formation menu-item-1469"><a
+                      href="https://www.institut-grasset.qc.ca/type-formation/effets-visuels/">VFX et animation</a></li>
+                  <li id="menu-item-1470"
+                    class="menu-item menu-item-type-taxonomy menu-item-object-type-formation menu-item-1470"><a
+                      href="https://www.institut-grasset.qc.ca/type-formation/medias-sociaux/">Médias sociaux</a></li>
+                  <li id="menu-item-1471"
+                    class="menu-item menu-item-type-taxonomy menu-item-object-type-formation menu-item-1471"><a
+                      href="https://www.institut-grasset.qc.ca/type-formation/modelisation-3d/">Animation 3D</a></li>
+                </ul>
+              </li>
+              <li><a href="Modifier-profil.html">Portfolio</a></li>
+              <li><a href="https://www.institut-grasset.qc.ca/a-propos/">À propos</a></li>
+              <li><a href="https://www.institut-grasset.qc.ca/employeurs-et-stages/">Employeurs et stages</a></li>
+              <li><a href="https://www.institut-grasset.qc.ca/admission/">Admission</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="container text-center">
+      <div id="fh5co-logo">
+        <a href="index2.html"><img src="/img/logo-portfolio.png" alt="Present Free HTML5 Bootstrap Template"></a>
+      </div>
+    </div>
+  </header>
 
-  
-  <body>
-
-	
-	<header id="fh5co-header" role="banner">
-		<div id="fh5co-logo">
-			<a href="https://www.institut-grasset.qc.ca"><img src="img/IGR_logo_blac.jpg" alt="Present Free HTML5 Bootstrap Template"></a>
-			
-			<div class="header-right">
- 
-
-				<nav class="header-right">
-					<div class="container-fluid">
-					  <div class="navbar-header">
-					  </div>
-					  <ul class="nav navbar-nav">  
-						  <li class="dropdown"><a class="active" href="#" class="dropdown-toggle" data-toggle="dropdown" href="#">Programmes <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-								 <li id="menu-item-1444" class="menu-item menu-item-type-post_type_archive menu-item-object-programmes current-menu-item menu-item-1444"><a href="https://www.institut-grasset.qc.ca/programmes/" aria-current="page">Tous les programmes</a></li>
-									<li id="menu-item-1414" class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1414"><a href="https://www.institut-grasset.qc.ca/programmes/aec-specialiste-en-realite-virtuelle-et-augmentee-ntl-1k/">Spécialiste en réalité virtuelle et augmentée</a></li>
-									<li id="menu-item-1415" class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1415"><a href="https://www.institut-grasset.qc.ca/programmes/dec-en-techniques-de-production-et-de-postproduction-televisuelles-589-ab/">Techniques de production et de postproduction télévisuelles</a></li>
-									<li id="menu-item-1416" class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1416"><a href="https://www.institut-grasset.qc.ca/programmes/aec-en-composition-et-effets-speciaux-pour-video-numerique-nwy-16/">Composition et effets spéciaux pour vidéo numérique</a></li>
-									<li id="menu-item-1417" class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1417"><a href="https://www.institut-grasset.qc.ca/programmes/aec-en-techniques-de-montage-et-dhabillage-infographique-nwy-00/">Techniques de montage et d’habillage infographique</a></li>
-									<li id="menu-item-1418" class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1418"><a href="https://www.institut-grasset.qc.ca/programmes/aec-en-production-televisuelle-et-cinematographique-nwy-15/">Production télévisuelle et cinématographique</a></li>
-									<li id="menu-item-1419" class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1419"><a href="https://www.institut-grasset.qc.ca/programmes/dec-en-techniques-de-linformatique-profil-programmation-nouveaux-medias-420-b0/">Techniques de l’informatique profil programmation nouveaux médias</a></li>
-									<li id="menu-item-1420" class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1420"><a href="https://www.institut-grasset.qc.ca/programmes/aec-en-production-multimedia-profil-web-et-medias-sociaux-nwe-1a/">Production multimédia, profil web et médias sociaux</a></li>
-									<li id="menu-item-1421" class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1421"><a href="https://www.institut-grasset.qc.ca/?post_type=programmes&amp;p=424">BIM pour l’estimation en construction</a></li>
-									<li id="menu-item-1422" class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1422"><a href="https://www.institut-grasset.qc.ca/programmes/aec-en-techniques-dinspection-en-batiment-eec-13/">Techniques d’inspection en bâtiment</a></li>
-									<li id="menu-item-1423" class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1423"><a href="https://www.institut-grasset.qc.ca/programmes/dec-en-technologie-de-lestimation-et-de-levaluation-en-batiment-voie-de-specialisation-en-estimation-en-construction-221-da/">Technologie de l’estimation et de l’évaluation en bâtiment, spécialisation en estimation en construction</a></li>
-									<li id="menu-item-1424" class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1424"><a href="https://www.institut-grasset.qc.ca/programmes/technologie-de-lestimation-et-de-levaluation-en-batiment-voie-de-specialisation-en-evaluation-immobiliere/">Technologie de l’estimation et de l’évaluation en bâtiment, spécialisation en évaluation immobilière</a></li>
-									<li id="menu-item-1426" class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1426"><a href="https://www.institut-grasset.qc.ca/programmes/techniques-danimation-3d-et-de-synthese-dimages/">Techniques d’animation 3D et de synthèse d’images</a></li>
-									<li id="menu-item-1427" class="menu-item menu-item-type-post_type menu-item-object-programmes menu-item-1427"><a href="https://www.institut-grasset.qc.ca/programmes/production-3d-pour-jeux-video/">Production 3D pour jeux vidéo</a></li>
-							 
-						</ul>
-					  </li>
-					  
-						<li class="dropdown"><a class="active" href="#" class="dropdown-toggle" data-toggle="dropdown" href="#">Formation en entreprise <span class="caret"></span></a>
-						  <ul class="dropdown-menu">
-							  <li id="menu-item-1474" class="menu-item menu-item-type-post_type_archive menu-item-object-formations menu-item-1474"><a href="https://www.institut-grasset.qc.ca/formations/">Voir tous les types de formations</a></li>
-									<li id="menu-item-2451" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2451"><a href="https://www.institut-grasset.qc.ca/type-formation/batiment/">Bâtiment</a></li>
-									<li id="menu-item-2452" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2452"><a href="https://www.institut-grasset.qc.ca/type-formation/television/">Cinéma et télévision</a></li>
-									<li id="menu-item-1467" class="menu-item menu-item-type-taxonomy menu-item-object-type-formation menu-item-1467"><a href="https://www.institut-grasset.qc.ca/type-formation/site-web-et-applications-mobiles/">Web et applications mobiles</a></li>
-									<li id="menu-item-1468" class="menu-item menu-item-type-taxonomy menu-item-object-type-formation menu-item-1468"><a href="https://www.institut-grasset.qc.ca/type-formation/bureautique-et-teletravail/">Télétravail et bureautique</a></li>
-									<li id="menu-item-1469" class="menu-item menu-item-type-taxonomy menu-item-object-type-formation menu-item-1469"><a href="https://www.institut-grasset.qc.ca/type-formation/effets-visuels/">VFX et animation</a></li>
-									<li id="menu-item-1470" class="menu-item menu-item-type-taxonomy menu-item-object-type-formation menu-item-1470"><a href="https://www.institut-grasset.qc.ca/type-formation/medias-sociaux/">Médias sociaux</a></li>
-									<li id="menu-item-1471" class="menu-item menu-item-type-taxonomy menu-item-object-type-formation menu-item-1471"><a href="https://www.institut-grasset.qc.ca/type-formation/modelisation-3d/">Animation 3D</a></li>
-								 
-						  </ul>
-						</li>
-						<li><a href="Modifier-profil.html">Portfolio</a></li>
-						<li><a href="https://www.institut-grasset.qc.ca/a-propos/">À propos</a></li>
-						<li><a href="https://www.institut-grasset.qc.ca/employeurs-et-stages/">Employeurs et stages</a></li>
-						<li><a href="https://www.institut-grasset.qc.ca/admission/">Admission</a></li> 
-					  </ul>
-					</div>
-				  </nav>
-			  </div>
-	  
-		</div>
-		<div class="container text-center">
-			<div id="fh5co-logo">
-				<a href="index2.html"><img src="img/logo-portfolio.png" alt="Present Free HTML5 Bootstrap Template"></a>
-			</div>
-		
-		</div>
-	</header>
- 
-<div class="grid-container">
-
+  <div class="grid-container">
     <div class="grid-child purple">
-		<div class="page-content">
-		<div class="myDiv"  >
-		<h1 class="no-margin">Alexandra Roy</h1>
-		<p><img src="images/user1.jpg"  style="left: 70px ;  width:300px;border-radius: 70%;" class="responsive"></p> 
-		<p>J’ai toujourpression of an idea through an image. My main interests are video games, scifi, fantasy, horror, mythology and astrology. 
-		Creative, curious and meticulomaster’s degree in visual arts taught me to target relevant information and prioritize tasks to achieve them and deliver quality work within tight deadlines. I have a good understanding of the basics in color theory and composition, as well as experience with Procreate, Photoshop, Illustrator and Autodesk Maya.</p>
-	</div>
+      <div class="page-content">
+        <div class="myDiv">
+          <h1 class="no-margin"><%= username %> <%= usersurname %></h1>
+          <p></p>
+            <% if(imagepath) { %>
+              <img src=<%= imagepath %> style="left: 70px ;  width:300px;border-radius: 70%;" class="responsive">
+            <% } else { %>
+              <img src="https://via.placeholder.com/300" style="left: 70px ;  width:300px;border-radius: 70%;" class="responsive">
+            <% } %>
+          </p>
+          <p><%= bio %> </p>
+          <p>Contactez moi sur : </p>
+          <p>Email : <%= email %></p>
+          <p>Num&eacute;ro de t&eacute;lephone : <%= phone %> </p>
+          <% if(statutemp == 1){ %>
+          <p style="color: rgb(255, 0, 0);">Je suis a la Recherche de travaille </p>
+          <% } else{ %>
+          <p> </p>
+          <% } %>
+        </div>
+      </div>
     </div>
-</div>
-    <div class="grid-child green">
-		<div class="page-content">
-        <h1 class="mb0">CrabInvasion</h1>
-		<div class="meta"><span><a href="#">Packaging</a>, <a href="#">Illustration</a></span></div>
-		<p>Description du Projet Squid Game :
-			Dans le contexte du cours Animation 3D expérientielle, nous devions créer un mini jeu interactif dans un environnement virtuel à l’aide de logiciel 3D et autres. Ce projet a été conceptualisé de A à Z avec l’utilisation des logiciels tel que Maya 3D, Substance painter, Photoshop et Unreal engine. Tous les éléments du jeu ont été modélisés, animés et texturiser de A à Z.
-			L’environnement est basé sur la série “Squid Game” auquel le joueur doit atteindre un score pour gagner la partie. À l’aide d’un fusil, le joueur doit tirer sur des cibles situées sur des plateformes. À fur et à mesure que le joueur atteint un nombre de score, une nouvelle plateforme s’active avec des nouvelles cibles.  Le fusil contient des balles auquel il doit recharger avec une machine qui distribue un chargeur.
-			</p>
-		<p><img src="images/exmp1.png" alt="portfolio"></p>
-		<p><img src="images/exmp1-3.png" alt="portfolio"></p>
-		<p><img src="images/exmp1-4.png" alt="portfolio"></p>
-		<p>Description du Projet Crab Invasion :</p>
-		<p>
-			Dans le cadre du cours en programmation C# et Unity, nous devions créer un jeu en réalité virtuel (choix libre) en équipe.
-			Crab invasion est un jeu de “Tower defense” dans un environnement interactif auquel le joueur doit défendre son château de sable sur une île envahit par des crabes durant la nuit. Pour défendre son château, le joueur à accès à une pelle et des noix de coco qui tombe des Cocotiers s'il rentre en collision avec l’arbre, par ailleurs, il peut utiliser une lampe de poche pour éclairer l’environnement. Les crabes font des dégâts à chaque seconde au château durant le temps qu’ils sont dans la boîte de collision. Pour gagner, le joueur devra éliminer tous les crabes sur l’île et réussir à défendre son château de sable.
-			</p>
-
-			<a href="https://www.youtube.com/watch?v=qsU4nM0L_n0">Lier vers le video complet</a>
-    </div>
-</div>
-</div>
-
-
-	<div class="container-fluid">
-		<div id="fh5co-projects-feed" class="fh5co-projects-feed clearfix masonry">
-			<div class="fh5co-project masonry-brick">
-				<a href="#">
-					<img src="images/exmp1-1.png" width="300px" alt="portfolio">
-					<h2>Projet 01</h2>
-				</a>
-			</div>
-			
-			<div class="fh5co-project masonry-brick">
-				<a href="single.html">
-					<img src="images/exmp1-4.png" width="300px" alt="portfolio">
-					<h2>Projet 02</h2>
-				</a>
-			</div>
-		
-			
-		
-		
-			<div class="fh5co-project masonry-brick">
-				<a href="single.html">
-					<img src="images/exmp3.jpg" width="300px" alt="portfolio">
-					<h2>Projet 03</h2>
-				</a>
-			</div>
-			<div class="fh5co-project masonry-brick">
-				<a href="single.html">
-					<img src="images/exmp7.jpg" width="300px" alt="portfolio">
-					<h2>Projet 04</h2>
-				</a>
-			</div>
-			<div class="fh5co-project masonry-brick">
-				<a href="single.html">
-					<img src="images/exmp8.jpg" width="300px" alt="portfolio">
-					<h2>Projet 05</h2>
-				</a>
-			</div>
-			<div class="fh5co-project masonry-brick">
-				<a href="single.html">
-					<img src="images/exmp7.jpg" width="300px" alt="portfolio">
-					<h2>Projet 06</h2>
-				</a>
-			</div>
-
-			<div class="fh5co-project masonry-brick">
-				<a href="single.html">
-					<img src="images/exmp1-3.png" width="300px" alt="portfolio">
-					<h2>Projet 07</h2>
-				</a>
+	<% if(projects.length > 0) { %>
+		<div class="grid-child green">
+			<div class="page-content">
+				<div class="meta"><span><a href="#">Nome du projet</a></span></div>
+				<h1 class="mb0"><%= projects[0].project_name %></h1><br>
+				<p>Description du projet : <br> <br><%= projects[0].project_description %></p>
+				<a href=<%= projects[0].project_url %>>Lier vers le video complet : <%= projects[0].project_url %></a>
+        <br>
+				<p><img src="/images/exmp1.png" alt="portfolio"></p>
 			</div>
 		</div>
-		<!--END .fh5co-projects-feed-->
-	</div>
-	<!-- END .container-fluid -->
-s
- 
-	<!-- END #fh5co-footer -->
-	
-<!-- jQuery -->
-<script src="js/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="js/bootstrap.min.js"></script>
-<!-- masonry -->
-<script src="js/jquery.masonry.min.js"></script>
-<!-- MAIN JS -->
-<script src="js/main.js"></script>
+		<div class="grid-child yellow">
+			<div class="row">
+				<% for(i=0; i < projects.length; i++) { %>
+					<div class="fh5co-project masonry-brick col-xs-4">
+						<a href="#">
+							<img src="https://via.placeholder.com/300" width="300px" alt="portfolio">
+							<h2><%= projects[i].project_name %></h2>
+						</a>
+					</div>
+				<% } %>
+			</div>
+		</div>
+	<% } %>
+    <!--END .fh5co-projects-feed-->
+  </div>
+  <!-- END .container-fluid -->
+
+  <!-- END #fh5co-footer -->
+
+  <!-- jQuery -->
+  <script src="/javascripts/js/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="/javascripts/js/bootstrap.min.js"></script>
+  <!-- masonry -->
+  <script src="/javascripts/js/jquery.masonry.min.js"></script>
+  <!-- MAIN JS -->
+  <script src="/javascripts/js/main.js"></script>
 
 </body>
- 
 <footer>
-    <%- include('./partials/footer'); %>
+  <%- include('./partials/footer'); %>
 </footer>
- 
+
 </html>

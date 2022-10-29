@@ -22,6 +22,8 @@ const optionBd = {
 
 
 
+
+
 //exp1
 const myConnection = require("express-myconnection");
 
@@ -95,8 +97,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-//app.use(express.static(path.join(__dirname + '/public')));
+//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname + '/public')));
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -119,6 +121,7 @@ app.use('/users', authenticationMiddleware, usersRouter);
 app.use('/accountStudentCreated', accountStudentCreatedRouter);
 app.use('/createStudentAccount', createStudentAccountRouter);
 app.use('/accountCreated', accountCreatedRouter);
+app.use('/accountStudentCreated', accountStudentCreatedRouter);
 app.use('/createAccount', authenticationMiddleware, createAccountRouter);
 
 
@@ -131,7 +134,9 @@ app.use('/portfolio-vistuer', portfolio_vistuer);
 app.use('/admin-Mprofil', authenticationMiddleware, admin_Mprofil);
 app.use('/admin-motPasse', authenticationMiddleware, admin_motPasse); 
 app.use('/admin-lise_EtudATT', authenticationMiddleware, admin_lise_EtudATT); 
+app.use('/admin-lise_EtudATT/*', authenticationMiddleware, admin_lise_EtudATT); 
 app.use('/admin-lise_Etud', authenticationMiddleware, admin_lise_Etud);
+app.use('/admin-lise_Etud/*', authenticationMiddleware, admin_lise_Etud);
 app.use('/admin-lise_Ensg', authenticationMiddleware, admin_Lise_Ensg); 
 app.use('/admin-lise_admins', authenticationMiddleware, adminLiseAdmins);
 app.use('/admin-liste_elem', authenticationMiddleware, admin_liste_elem);
@@ -148,12 +153,6 @@ app.use('/Etud-Mprofil', authenticationMiddleware, Etud_Mprofil);
 app.use('/Etud-motPasse', authenticationMiddleware, Etud_motPasse);
 app.use('/Etud-liste_elem', authenticationMiddleware, Etud_liste_elem);
 app.use('/Etud-ajout_elem', authenticationMiddleware, Etud_ajout_elem);
-
-
-
-
-
-
 
 
 // catch 404 and forward to error handler

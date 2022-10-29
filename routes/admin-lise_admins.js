@@ -3,7 +3,6 @@ var router = express.Router();
 
 /* GET portfolio etudinat listing. */
 router.get('/', function(req, res, next) {
-  
   req.getConnection((erreur, connection) => {
     if (erreur) {
       console.log(erreur);
@@ -19,11 +18,7 @@ router.get('/', function(req, res, next) {
       });
     }
   });
-  
- 
 });
-
-
 
 router.delete("/admin-lise_admins/:id", (req, res) => {
   let id = req.params.id;
@@ -48,5 +43,4 @@ router.delete("/admin-lise_admins/:id", (req, res) => {
   });
 });
 
- 
 module.exports = router;

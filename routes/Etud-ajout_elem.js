@@ -1,7 +1,8 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-/* GET portfolio etudinat listing. */
+const db = require('../utils/db');
+
 router.get('/', function(req, res, next) {
   res.render('Etud-ajout_elem', { 
     user: req.user.user_id,
@@ -9,36 +10,26 @@ router.get('/', function(req, res, next) {
   });
 });
 
-module.exports = router;
-router.post("/ajout_elem", (req, res) => {
-  let id = req.body.id 
-  let  = req.body.name;
-  let portfolioId = req.body.portfolioId;
-  let url = req.body.url; 
-  let description = req.body.description; 
+router.post("/", async (req, res) => {
+  let { id, titre, url, description } = req.body; 
 
+  const user = req.user.user_id;
+  student = await db.findStudent(user);
 
-  let reqSql =
-    id === null
-      ? "INSERT INTO `projects`(`project_id`, `project_name`, `project_description`, `portfolio_id`, `project_url`, `project_active`) VALUES(?, ?, ?, ?, ?, ?)"
-      : "UPDATE notes SET titre = ?, description = ? WHERE id = ?";
-
-  let donnees =
-    id === null ? [1, name, description, 5232, url, 1] : [titre, description, id];
-
-  req.getConnection((erreur, connection) => {
-    if (erreur) {
-      console.log(erreur);
-      res.status(500).render("erreur", { erreur });
+  try {
+    if (!id || id === null) {
+      console.info("create new project");
+      await db.insertProject({ titre: titre, studentId: student.student_id, url: url, description: description });
     } else {
-      connection.query(reqSql, donnees, (erreur, resultat) => {
-        if (erreur) {
-          console.log(erreur);
-          res.status(500).render("erreur", { erreur });
-        } else {
-          res.status(300).redirect("/");
-        }
-      });
+      console.info("update new project ", id);
+      await db.updateProject({ id: id, titre: titre, description: description });
     }
-  });
+  } catch (error) {
+    console.error(error);
+    res.status(500).render("erreur", { error });
+  }
+
+  res.status(301).redirect("/Etud-liste_elem");
 });
+
+module.exports = router;
