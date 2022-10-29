@@ -1,115 +1,119 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <%- include('./partials/head2', { title: 'Users' }); %>
- 
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+<head>
+  <%- include('./partials/head2', { title: 'Users' }); %>
 
-  
-  <body>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+  <div class="header">
+    <a href="https://www.institut-grasset.qc.ca"><img src="images/IGR_logo_blac.jpg"alt="Present Free HTML5 Bootstrap Template"></a>
+    <div class="header-right">
+      <nav class="header-right">
+        <div class="container-fluid">
+          <div class="navbar-header">
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a class="active" href="Etud-portfolio">Portfolio</a></li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" href="#">Liste <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="Etud-liste_elem">Liste des &eacute;lements</a></li>
+                <li><a href="Etud-ajout_elem">Ajouter &eacute;lement</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" href="#">Profil <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="Etud-Mprofil">Modifier profile</a></li>
+                <li><a href="Etud-motPasse">Changer le mot de passe </a></li>
+                <li><a href="">Desactiver le compte</a></li>
+              </ul>
+            </li>
+            <li>
+              <form method="post" action="/logout"><button class="button2" type="submit">D&eacute;connexion</button>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
 
-	
-	<div class="header">
-		<a href="https://www.institut-grasset.qc.ca"><img src="images/IGR_logo_blac.jpg" alt="Present Free HTML5 Bootstrap Template"></a>
-	
-		<div class="header-right">
-	 
+  <!-- END #fh5co-header -->
 
-			<nav class="header-right">
-				<div class="container-fluid">
-				  <div class="navbar-header">
-				  </div>
-				  <ul class="nav navbar-nav">
-					<li><a class="active" href="Etud-portfolio">Portfolio</a></li>
-					<li class="dropdown"><a  href="#" class="dropdown-toggle" data-toggle="dropdown" href="#">Liste <span class="caret"></span></a>
-					  <ul class="dropdown-menu">
-						<li><a href="Etud-liste_elem">Liste des &eacute;lements</a></li>
-						<li><a href="Etud-ajout_elem">Ajouter &eacute;lement</a></li>
-					  </ul>
-					</li>
-					<li class="dropdown"><a  href="#" class="dropdown-toggle" data-toggle="dropdown" href="#">Profil <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-						  <li><a href="Etud-Mprofil">Modifier profile</a></li>
-						  <li><a  href="Etud-motPasse">Changer le mot de passe </a></li>
-						  <li><a href="">Desactiver le compte</a></li>
-						</ul>
-					  </li> 
-					  <li><form method="post" action="/logout" ><button class="button2" type="submit">D&eacute;connexion</button></form></li>  
-			
-				  </ul>
-				</div>
-			  </nav>
-		</div>
-	  </div>
-
-	<!-- END #fh5co-header -->
-	 
-		
-	</div>
- 
-
-
-
-<div class="grid-container">
-
+  <div class="grid-container">
     <div class="grid-child purple">
-		<div class="page-content">
-		<div class="myDiv"  >
-		<h1 class="no-margin"><%= username %> <%= usersurname %></h1>
-		<p><img src=<%= imagepath %> style="left: 70px ;  width:300px;border-radius: 70%;" class="responsive"></p> 
-		<p><%= bio %> </p>
-		<p>Contactez moi sur : </p>
-		<p>Email : <%= email %></p>
-		<p>Num&eacute;ro de t&eacute;lephone : <%= phone %> </p>
-		<% if(statutemp == 1){ %>
-			<p style="color: rgb(255, 0, 0);">Je suis a la Recherche de travaille  </p>
-			<% } else{ %>  
-			<p> </p>
-			<% } %>	
-	</div>
-	
+      <div class="page-content">
+        <div class="myDiv">
+          <h1 class="no-margin"><%= username %> <%= usersurname %></h1>
+          <% if(imagepath) { %>
+			<img src=<%= imagepath %> style="left: 70px ;  width:300px;border-radius: 70%;" class="responsive">
+		  <% } else { %>
+			<img src="https://via.placeholder.com/300" style="left: 70px ;  width:300px;border-radius: 70%;" class="responsive">
+		  <% } %>
+          <p><%= bio %> </p>
+          <p>Contactez moi sur : </p>
+          <p>Email : <%= email %></p>
+          <p>Num&eacute;ro de t&eacute;lephone : <%= phone %> </p>
+          <% if(statutemp == 1){ %>
+          <p style="color: rgb(255, 0, 0);">Je suis a la Recherche de travaille </p>
+          <% } else{ %>
+          <p> </p>
+          <% } %>
+        </div>
+
+      </div>
     </div>
-</div>
-    <div class="grid-child green">
-		<div class="page-content">
-		<div class="meta"><span><a href="#">Nome du projet</a></span></div>
-		
-        <h1 class="mb0"><%= projectName %></h1><br>
-		<p>Description du projet : <br> <br><%= projectDesc %>
-			</p>
-		<a href=<%= projectUrl %>>Lier vers le video complet : <%= projectUrl %></a>
-		<p> <br><img src="images/exmp1.png" alt="portfolio"></p>
-		<p><img src="images/exmp1-3.png" alt="portfolio"></p>
-		<p><img src="images/exmp1-4.png" alt="portfolio"></p> 
-		
+	<% if(projects.length > 0) { %>
+		<div class="grid-child green">
+			<div class="page-content">
+				<div class="meta"><span><a href="#">Nome du projet</a></span></div>
+				<h1 class="mb0"><%= projects[0].project_name %></h1><br>
+				<p>Description du projet : <br> <br><%= projects[0].project_description %>
+				</p>
+				<a href=<%= projects[0].project_url %>>Lier vers le video complet : <%= projects[0].project_url %></a>
+				<p> <br><img src="images/exmp1.png" alt="portfolio"></p>
+				<p><img src="images/exmp1-3.png" alt="portfolio"></p>
+				<p><img src="images/exmp1-4.png" alt="portfolio"></p>
+			</div>
+		</div>
+		<div class="grid-child yellow">
+			<div class="row">
+				<% for(i=0; i < projects.length; i++) { %>
+					<div class="fh5co-project masonry-brick col-xs-4">
+						<a href="#">
+							<img src="https://via.placeholder.com/300" width="300px" alt="portfolio">
+							<h2><%= projects[i].project_name %></h2>
+						</a>
+					</div>
+				<% } %>
+			</div>
+		</div>
+	<% } %>
 
-    </div>
-</div>
-</div>
+	<% if(projects.length == 0) { %>
+		<div class="grid-child green" style="margin: auto;">
+			<p style="margin: 20px auto;">Aucun element créé</p>
+			<a href="/Etud-ajout_elem" class="button" style="margin: 0 auto;background-color: #03a9f4; color: #fff;border-radius: 5px; padding: 10px 20px; max-height: 40px;">Créer un element</a>
+		</div>
+	<% } %>
+  </div>
 
+  <!-- END .container-fluid -->
 
-	 
-	<!-- END .container-fluid -->
- 
+  <!-- END #fh5co-footer -->
 
-	<!-- END #fh5co-footer -->
-	
-<!-- jQuery -->
-<script src="javascripts/js/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="javascripts/js/bootstrap.min.js"></script>
-<!-- masonry -->
-<script src="javascripts/js/jquery.masonry.min.js"></script>
-<!-- MAIN JS -->
-<script src="javascripts/js/main.js"></script>
-
+  <!-- jQuery -->
+  <script src="javascripts/js/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="javascripts/js/bootstrap.min.js"></script>
+  <!-- masonry -->
+  <script src="javascripts/js/jquery.masonry.min.js"></script>
+  <!-- MAIN JS -->
+  <script src="javascripts/js/main.js"></script>
 </body>
-  <footer>
-    <%- include('./partials/footer2'); %>
-  </footer>
+<footer>
+  <%- include('./partials/footer2'); %>
+</footer>
 
-
- 
 <script src="javascripts/style.js" type="text/javascript"></script>
 </html>

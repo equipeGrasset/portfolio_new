@@ -1,127 +1,152 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <%- include('./partials/head2', { title: 'Users' }); %>
- 
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
 
-  <body>
+<head>
+  <%- include('./partials/head2', { title: 'Users' }); %>
 
-	
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
 
-	<div class="header">
-		<a href="https://www.institut-grasset.qc.ca"><img src="images/IGR_logo_blac.jpg" alt="Present Free HTML5 Bootstrap Template"></a>
-		
-		<div class="header-right">
-			<nav class="header-right">
-				<div class="container-fluid">
-				   
-				  <ul class="nav navbar-nav">  
-					<li><a class="active" href="Ensg-lise_Etud">Liste des etudiants</a></li> 
-				 
-					<li class="dropdown"><a    href="#" class="dropdown-toggle" data-toggle="dropdown" href="#">Profil <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-						  <li><a  href="Ensg-Mprofil">Modifier profile</a></li>
-						  <li><a   href="Ensg-motPasse">Changer le mot de passe </a></li>
-						 </ul>
-					  </li> 
-					  <li><form method="post" action="/logout" ><button class="button2" type="submit">D&eacute;connexion</button></form></li>  
-					</ul>
-				</div>
-			  </nav>
-		</div>
-	  </div>
+<body>
+  <div class="header">
+    <a href="https://www.institut-grasset.qc.ca"><img src="images/IGR_logo_blac.jpg"
+        alt="Present Free HTML5 Bootstrap Template"></a>
+
+    <div class="header-right">
+      <nav class="header-right">
+        <div class="container-fluid">
+
+          <ul class="nav navbar-nav">
+            <li><a class="active" href="Ensg-lise_Etud">Liste des etudiants</a></li>
+
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" href="#">Profil <span
+                  class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="Ensg-Mprofil">Modifier profile</a></li>
+                <li><a href="Ensg-motPasse">Changer le mot de passe </a></li>
+              </ul>
+            </li>
+            <li>
+              <form method="post" action="/logout"><button class="button2" type="submit">D&eacute;connexion</button>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
 
 
 
-	
-	<!-- END #fh5co-header -->
-	<div class="page-content2">
 
-		<h1 class="no-margin">Liste des etudiants</h1>
-
-		<h2 class="h4 is-gray is-normal is-sans-serif"> Promotion Été 2022</h2>
-			
-
-		</div>
-		<input type="text" id="myInput"  onkeyup="myFunction()"  placeholder="Search for names..">
-
-		<table id="myTable" >
-		<tr class="header">
-			
-			<th style="width:20%;">Nom</th>
-			<th style="width:20%;">prenom</th>
-			<th style="width:60%;">DA</th>
-			<th style="width:100%;">programme</th>
-			<th style="width:30%;">Epingler</th> 
-		</tr>
+  <!-- END #fh5co-header -->
+  <div class="page-content2">
+    <h1 class="no-margin">Liste des etudiants</h1>
+    <h2 class="h4 is-gray is-normal is-sans-serif"> Promotion Été 2022</h2>
+  </div>
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+  <table id="myTable">
+    <tr class="header">
+      <th style="width:20%;">Nom</th>
+      <th style="width:20%;">prenom</th>
+      <th style="width:60%;">DA</th>
+      <th style="width:100%;">programme</th>
+      <th style="width:30%;">Epingler</th>
+    </tr>
+    <tr></tr>
+    <% for(i=0; i<resultat.length; i++) { %>
 		<tr>
-		 
-		 
-			
-			 	</tr>
-	
-				 <% for(i=0; i<resultat.length; i++) { %>
-					<tr>
-					  <td><%= resultat[i].student_surname %></td>
-					  <td><%= resultat[i].student_name %></td>
-					  <td><%= resultat[i].student_DA %></td>
-					  <td><%= resultat[i].program_name %></td>
+		<td><%= resultat[i].student_surname %></td>
+		<td><%= resultat[i].student_name %></td>
+		<td><%= resultat[i].student_DA %></td>
+		<td><%= resultat[i].program_name %></td>
+		<td>
+			<label class="switch">
+				<% if(resultat[i].student_tagged) { %>
+					<input type="checkbox" id="etat-<%= resultat[i].student_DA %>" onchange="doEtat(<%= resultat[i].student_DA %>)" checked>
+				<% } else { %>
+					<input type="checkbox" id="etat-<%= resultat[i].student_DA %>" onchange="doEtat(<%= resultat[i].student_DA %>)">
+				<% } %>
+				<span class="slider"></span>
+        	</label>
+		</td>
+	<% } %>
+  </table>
 
-					   
-					  <td><label class="switch" >
-					  <input type="checkbox">
-					  <span class="slider"></span>
-					  </label></td>
-				  
-				
-					<% } %>
-					  
-		
-		</table>
+  <!-- END .container-fluid -->
 
-	
-	<!-- END .container-fluid -->
+  <!-- END #fh5co-footer -->
 
-	 
-	<!-- END #fh5co-footer -->
-	
-<!-- jQuery -->
-<script src="javascripts/js/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="javascripts/js/bootstrap.min.js"></script>
-<!-- masonry -->
-<script src="javascripts/js/jquery.masonry.min.js"></script>
-<!-- MAIN JS -->
-<script src="javascripts/js/main.js"></script>
-<script>
-	function myFunction() {
-		// Declare variables
-		var input, filter, table, tr, td, i, txtValue;
-		input = document.getElementById("myInput");
-		filter = input.value.toUpperCase();
-		table = document.getElementById("myTable");
-		tr = table.getElementsByTagName("tr");
-	
-		// Loop through all table rows, and hide those who don't match the search query
-		for (i = 0; i < tr.length; i++) {
-		td = tr[i].getElementsByTagName("td")[0];
-		if (td) {
-			txtValue = td.textContent || td.innerText;
-			if (txtValue.toUpperCase().indexOf(filter) > -1) {
-			tr[i].style.display = "";
-			} else {
-			tr[i].style.display = "none";
-			}
+  <!-- jQuery -->
+  <script src="javascripts/js/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="javascripts/js/bootstrap.min.js"></script>
+  <!-- masonry -->
+  <script src="javascripts/js/jquery.masonry.min.js"></script>
+  <!-- MAIN JS -->
+  <script src="javascripts/js/main.js"></script>
+  <script>
+    function myFunction() {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+
+	document.addEventListener('change', async function (event) {
+		if (!event.target.matches('input[type="checkbox"]')) {
+			return;
 		}
+
+		console.log("event.target.checked", event.target.checked);
+	});
+
+	async function doEtat(studentId) {
+		var element = document.getElementById("etat-" + studentId);
+
+		if (element.checked) {
+			await fetch('/Ensg-lise_Etud/student/etat', {
+				method: 'POST',
+				headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({studentId: studentId, tagged: true})
+			});
+		} else {
+			await fetch('/Ensg-lise_Etud/student/etat', {
+				method: 'POST',
+				headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({studentId: studentId, tagged: false})
+			});
 		}
+
+		window.location.reload();
 	}
-	</script>
+  </script>
 
 </body>
 <footer>
-    <%- include('./partials/footer'); %>
+  <%- include('./partials/footer'); %>
 </footer>
-  <script src="javascripts/style.js" type="text/javascript"></script>
-  </html>
+<script src="javascripts/style.js" type="text/javascript"></script>
+
+</html>

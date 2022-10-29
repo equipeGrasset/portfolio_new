@@ -59,9 +59,11 @@
 		<tr class="header">
 		  <th style="width:60%;">Nom</th>
 		  <th style="width:60%;">prenom</th>
+		  <th style="width:60%;">ID</th>
 		  <th style="width:60%;">DA</th>
 		  <th style="width:40%;">programme</th>
 		  <th style="width:40%;">Etat</th>
+		  <th style="width:40%;"></th>
 		</tr>
 	
 		
@@ -70,9 +72,14 @@
 			  <td><%= resultat[i].student_name %></td>
 			  <td><%= resultat[i].student_surname %></td>
 			  <td><%= resultat[i].student_id %></td>
+			  <td><%= resultat[i].student_DA %></td>
 			  <td><%= resultat[i].student_program %></td>
 			  <td><label class="switch" >
-				<input type="checkbox">
+				<% if(resultat[i].student_tagged) { %>
+					<input type="checkbox" id="etat-<%= resultat[i].student_DA %>" onchange="doEtat(<%= resultat[i].student_DA %>)" checked>
+				<% } else { %>
+					<input type="checkbox" id="etat-<%= resultat[i].student_DA %>" onchange="doEtat(<%= resultat[i].student_DA %>)">
+				<% } %>
 				<span class="slider"></span>
 				</label></td> 
 			   
@@ -125,6 +132,32 @@
 		  }
 		}
 	  }
+	}
+
+	async function doEtat(userId) {
+		var element = document.getElementById("etat-" + userId);
+
+		if (element.checked) {
+			await fetch('/admin-lise_EtudATT/student/etat', {
+				method: 'POST',
+				headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({userId: userId, status: true})
+			});
+		} else {
+			await fetch('/admin-lise_EtudATT/student/etat', {
+				method: 'POST',
+				headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({userId: userId, status: false})
+			});
+		}
+
+		window.location.reload();
 	}
 	</script>
 
