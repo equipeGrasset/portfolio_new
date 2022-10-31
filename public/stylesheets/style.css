@@ -6,3 +6,15 @@ body {
 a {
   color: #00B7FF;
 }
+
+footer {
+  float: left;
+  width: 100%; 
+  /* position: absolute;
+  bottom: 0; */
+  background: #000000;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  color: #999999;
+}
