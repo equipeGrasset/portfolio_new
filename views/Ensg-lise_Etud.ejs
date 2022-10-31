@@ -44,31 +44,31 @@
     <h1 class="no-margin">Liste des etudiants</h1>
     <h2 class="h4 is-gray is-normal is-sans-serif"> Promotion Été 2022</h2>
   </div>
-  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Chercher par nom...">
   <table id="myTable">
     <tr class="header">
       <th style="width:20%;">Nom</th>
-      <th style="width:20%;">prenom</th>
-      <th style="width:60%;">DA</th>
-      <th style="width:100%;">programme</th>
+      <th style="width:20%;">Prenom</th>
+      <th style="width:20%;">DA</th>
+      <th style="width:80%;">Programme</th>
       <th style="width:30%;">Epingler</th>
     </tr>
     <tr></tr>
     <% for(i=0; i<resultat.length; i++) { %>
 		<tr>
-		<td><%= resultat[i].student_surname %></td>
 		<td><%= resultat[i].student_name %></td>
+		<td><%= resultat[i].student_surname %></td>
 		<td><%= resultat[i].student_DA %></td>
 		<td><%= resultat[i].program_name %></td>
 		<td>
 			<label class="switch">
 				<% if(resultat[i].student_tagged) { %>
-					<input type="checkbox" id="etat-<%= resultat[i].student_DA %>" onchange="doEtat(<%= resultat[i].student_DA %>)" checked>
+					<input type="checkbox" id="etat-<%= resultat[i].student_DA %>" onchange="doEtat('<%= resultat[i].student_DA %>')" checked>
 				<% } else { %>
-					<input type="checkbox" id="etat-<%= resultat[i].student_DA %>" onchange="doEtat(<%= resultat[i].student_DA %>)">
+					<input type="checkbox" id="etat-<%= resultat[i].student_DA %>" onchange="doEtat('<%= resultat[i].student_DA %>')">
 				<% } %>
 				<span class="slider"></span>
-        	</label>
+      </label>
 		</td>
 	<% } %>
   </table>
@@ -138,8 +138,6 @@
 				body: JSON.stringify({studentId: studentId, tagged: false})
 			});
 		}
-
-		window.location.reload();
 	}
   </script>
 

@@ -16,5 +16,20 @@ router.get('/', async function(req, res, next) {
 
   res.status(200).render("Etud-liste_elem", { resultat });
 });
+
+router.delete('/:id', async function (req, res, next) {
+
+  const projectId = req.params.id;
+
+  try {
+    await db.deleteProject(projectId);
+  } catch (error) {
+    console.log(error);
+  }
+
+  res.status(200).json({
+    routeRacine: "/Etud-liste_elem"
+  });
+});
  
 module.exports = router; 

@@ -25,7 +25,7 @@
               <ul class="dropdown-menu">
                 <li><a href="Etud-Mprofil">Modifier profile</a></li>
                 <li><a href="Etud-motPasse">Changer le mot de passe </a></li>
-                <li><a href="">Desactiver le compte</a></li>
+                <li><a href="#" onclick="disableStudent()">Desactiver le compte</a></li>
               </ul>
             </li>
             <li>
@@ -46,10 +46,10 @@
         <div class="myDiv">
           <h1 class="no-margin"><%= username %> <%= usersurname %></h1>
           <% if(imagepath) { %>
-			<img src=<%= imagepath %> style="left: 70px ;  width:300px;border-radius: 70%;" class="responsive">
-		  <% } else { %>
-			<img src="https://via.placeholder.com/300" style="left: 70px ;  width:300px;border-radius: 70%;" class="responsive">
-		  <% } %>
+            <img src=<%= imagepath %> style="left: 70px ;  width:300px;border-radius: 70%;" class="responsive">
+          <% } else { %>
+            <img src="https://via.placeholder.com/300" style="left: 70px ;  width:300px;border-radius: 70%;" class="responsive">
+          <% } %>
           <p><%= bio %> </p>
           <p>Contactez moi sur : </p>
           <p>Email : <%= email %></p>
@@ -110,6 +110,8 @@
   <script src="javascripts/js/jquery.masonry.min.js"></script>
   <!-- MAIN JS -->
   <script src="javascripts/js/main.js"></script>
+  
+  <script src="/javascripts/js/student.js" type="text/javascript"></script>
 </body>
 <footer>
   <%- include('./partials/footer2'); %>
