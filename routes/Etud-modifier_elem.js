@@ -5,10 +5,20 @@ const router = express.Router();
 const file = require('../utils/uploadFile');
 const db = require('../utils/db');
 
-router.get('/', function(req, res, next) {
-  res.render('Etud-ajout_elem', { 
+router.get('/:id', async function(req, res, next) {
+
+  const projectId = req.params.id;
+  project = await db.findProject(projectId);
+
+  res.render('Etud-modifier_elem', { 
     user: req.user.user_id,
-    title: 'Express'
+    projectId: project.project_id,
+    titre: project.project_name,
+    url: project.project_url,
+    description: project.project_description,
+    fileId: project.file_id,
+    fileName: project.file_name,
+    filePath: project.file_path,
   });
 });
 
@@ -25,14 +35,14 @@ router.post("/", async (req, res) => {
       const user = req.user.user_id;
       student = await db.findStudent(user);
 
-      const fileInfo = await file.uploadFile(files, student.student_id);
+      let { id, titre, url, description, fileId, fileName } = fields;
 
-      let { id, titre, url, description } = fields; 
+      await file.removeFile(fileName, student.student_id);
+      const fileInfo = await file.uploadFile(files, student.student_id);
     
       try {
-        const result = await db.insertProject({ titre: titre, studentId: student.student_id, url: url, description: description });
-        console.log("result", result.id);
-        await db.insertFile({ name: fileInfo.name, path: fileInfo.path, projectId: result.id });
+        await db.updateProject({ id: id, titre: titre, url: url, description: description });
+        await db.updateFile({ id: fileId, name: fileInfo.name, path: fileInfo.path});
       } catch (error) {
         console.error(error);
         res.status(500).render("erreur", { error });

@@ -51,8 +51,8 @@
     <table id="myTable" >
       <tr class="header">
 
+        <th style="width:60%;">Prenom</th>
         <th style="width:60%;">Nom</th>
-        <th style="width:60%;">prenom</th>
         <th style="width:60%;">NE</th>  
         <th style="width:40%;"> <i class="fa fa-trash"></i> <a  href="createAccount">+Ajouter admin</a> </th>
 
@@ -64,10 +64,7 @@
         <td><%= resultat[i].administrator_name %></td>
         <td><%= resultat[i].administrator_surname %></td>
         <td><%= resultat[i].employee_number %></td> 
-        
-
-        
-             <td ><input class="btn" type="button" value="Supprimer" onclick=""></td>
+        <td ><input class="btn" type="button" value="Supprimer" onclick="supprimer('<%= resultat[i].employee_number %>')"></td>
       </tr>
 
     <% } %>
@@ -108,6 +105,19 @@
       }
     }
   }
+
+  function supprimer(id) {
+      var retVal = confirm(`Voulez-vous supprimer le Admin ${id}?`);
+      if( retVal === false ) {
+        return;
+      }
+
+      let pointFinal = "/admin-lise_admins/" + id
+      fetch(pointFinal, {method : "DELETE"})
+      .then((reponse)=> reponse.json())
+      .then((donnee)=> window.location.href = donnee.routeRacine)
+      .catch((erreur)=> console.log(erreur))
+    }
   </script>
 
 </body>

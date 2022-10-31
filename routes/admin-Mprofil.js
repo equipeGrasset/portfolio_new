@@ -14,15 +14,15 @@ var db = require('../utils/db');
 
 router.post('/', async function(req, res, next) {
 
-const body = req.body;
+  const body = req.body;
+  const user = req.user.user_id;
 
-const user = req.user.user_id;
-try{
-  await db.MProfilAdmin(body,user);
-  res.render('admin-Mprofil', { msg: "Done" } ); 
-
-} catch (error) {
-  console.error(error);
+  try{
+    await db.MProfilAdmin(body,user);
+    res.status(301).redirect('admin-Mprofil');
+  } catch (error) {
+    console.error(error);
+    res.status(500).render("erreur", { error });
   }
 }) 
 

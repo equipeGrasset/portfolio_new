@@ -1,304 +1,284 @@
-
 <!DOCTYPE html>
-<html class="no-js"> 
+<html class="no-js">
 <head>
-	<%- include('./partials/head2', { title: 'Authentication' }); %>
-<style>
-	* {
-		box-sizing: border-box;
-	}
-	
-	input[type=text], select, textarea {
-		width: 100%;
-		padding: 12px;
-		border: 1px solid #ccc;
-		border-radius: 4px;
-		resize: vertical;
-	}
-	
-	label {
-		padding: 12px 12px 12px 0;
-		display: inline-block;
-	}
-	
-	input[type=submit] {
-		background-color: #0A3656;
-		color: white;
-		padding: 12px 46%;
-		border: none;
-		border-radius: 4px;
-		cursor: pointer;
-		float: right;
-	}
-	
-	input[type=submit]:hover {
-		background-color: #0A3656;
-	}
-	
-	.container {
-		border-radius: 5px;
-		background-color: #f2f2f2;
-		padding: 20px;
-	}
-	
-	.col-25 {
-		float: left;
-		width: 55%;
-		margin-top: 6px;
-	}
-	
-	.col-75 {
-		float: left;
-		width: 100%;
-		margin-top: 6px;
-	}
-	
-	/* Clear floats after the columns */
-	.row:after {
-		content: "";
-		display: table;
-		clear: both;
-	}
-	
-	/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-	@media screen and (max-width: 600px) {
-		.col-25, .col-75, input[type=submit] {
-		width: 100%;
-		margin-top: 0;
-		}
-	}
-	</style>
+  <%- include('./partials/head2', { title: 'Modifier Profil' }); %>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-<!-- Modernizr JS -->
-<script src="js/modernizr-2.6.2.min.js"></script>
-<!-- FOR IE9 below -->
-<!--[if lt IE 9]>
+    input[type=text],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    label {
+      padding: 12px 12px 12px 0;
+      display: inline-block;
+    }
+
+    input[type=submit] {
+      background-color: #0A3656;
+      color: white;
+      padding: 12px 46%;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      float: right;
+    }
+
+    input[type=submit]:hover {
+      background-color: #0A3656;
+    }
+
+    .container {
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+
+    .col-25 {
+      float: left;
+      width: 55%;
+      margin-top: 6px;
+    }
+
+    .col-75 {
+      float: left;
+      width: 100%;
+      margin-top: 6px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 600px) {
+
+      .col-25,
+      .col-75,
+      input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+      }
+    }
+
+  </style>
+  <!-- Modernizr JS -->
+  <script src="js/modernizr-2.6.2.min.js"></script>
+  <!-- FOR IE9 below -->
+  <!--[if lt IE 9]>
 <script src="js/respond.min.js"></script>
 <![endif]-->
-
 </head>
+
 <body>
+  <div class="header">
+    <a href="https://www.institut-grasset.qc.ca"><img src="images/IGR_logo_blac.jpg" alt="Present Free HTML5 Bootstrap Template"></a>
+    <div class="header-right">
+      <nav class="header-right">
+        <div class="container-fluid">
+          <div class="navbar-header">
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="Etud-portfolio">Portfolio</a></li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" href="#">Liste <span
+                  class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="Etud-liste_elem">Liste des &eacute;lements</a></li>
+                <li><a href="Etud-ajout_elem">Ajouter &eacute;lement</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a class="active" href="#" class="dropdown-toggle" data-toggle="dropdown"
+                href="#">Profil <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a class="active" href="Etud-Mprofil">Modifier profile</a></li>
+                <li><a href="Etud-motPasse">Changer le mot de passe </a></li>
+                <li><a href="#" onclick="disableStudent()">Desactiver le compte</a></li>
+              </ul>
+            </li>
+            <li>
+              <form method="post" action="/logout">
+                <button class="button2" type="submit">D&eacute;connexion</button>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <!-- END #fh5co-header -->
+  <div class="page-content2">
+    <h1 class="no-margin">Modifier Profil</h1>
+  </div>
 
-	
+  <div></div>
 
-	<div class="header">
-		<a href="https://www.institut-grasset.qc.ca"><img src="images/IGR_logo_blac.jpg" alt="Present Free HTML5 Bootstrap Template"></a>
-	
-		<div class="header-right">
-	 
+  <section>
+    <div class="row">
+      <div class="container">
+        <% if(imagepath) { %>
+          <img id="studentPhoto" width="300px" height="300px" alt="Nature" style="left: 70px ;  width:300px;border-radius: 70%;" class="responsive" src="<%= imagepath %>" />
+        <% } else { %>
+            <img id="studentPhoto" width="300px" height="300px" alt="Nature" style="left: 70px ;  width:300px;border-radius: 70%;" class="responsive" src="https://via.placeholder.com/400" />
+        <% } %>
+      </div>
+    </div>
 
-			<nav class="header-right">
-				<div class="container-fluid">
-				  <div class="navbar-header">
-				  </div>
-				  <ul class="nav navbar-nav">
-					<li><a  href="Etud-portfolio">Portfolio</a></li>
-					<li class="dropdown"><a  href="#" class="dropdown-toggle" data-toggle="dropdown" href="#">Liste <span class="caret"></span></a>
-					  <ul class="dropdown-menu">
-						<li><a href="Etud-liste_elem">Liste des &eacute;lements</a></li>
-						<li><a href="Etud-ajout_elem">Ajouter &eacute;lement</a></li>
-					  </ul>
-					</li>
-					<li class="dropdown"><a class="active" href="#" class="dropdown-toggle" data-toggle="dropdown" href="#">Profil <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-						  <li><a class="active"href="Etud-Mprofil">Modifier profile</a></li>
-						  <li><a  href="Etud-motPasse">Changer le mot de passe </a></li>
-						  <li><a href="">Desactiver le compte</a></li>
-						</ul>
-					  </li> 
-					  <li><form method="post" action="/logout" ><button class="button2" type="submit">D&eacute;connexion</button></form></li>  
+    <div class="container">
+      <form method="post" action="/Etud-Mprofil">
+        <div class="row">
+          <div class="col-25">
+            <label for="avatar">choisir la photo de profile :</label>
+          </div>
+          <div>
+            <div class="col-75">
+              <input type="hidden" id="avatarImg" name="avatarImg" value="<%= imagepath %>" />
+              <input type="file" id="inputFileAvatar" name="avatarFile" accept="image/png, image/jpeg"></div>
+              <p id="avatarFileError" style="color: red; display: inline-block;"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="fname">Nom</label>
+          </div>
+          <div>
+            <div class="col-75">
+              <input type="text" id="alphaNom" name="name" required onkeyup="validate_alphaNom()" value=<%= usersurname %>>
+              <span id="wrong_nom_alert"></span></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="fname">pr&eacute;nom</label>
+          </div>
+          <div>
+            <div class="col-75">
+              <input type="text" id="alphaPrenom" name="surname" required onkeyup="validate_alphaPrenom()" value="<%= username %>">
+              <span id="wrong_nom_alert"></span></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="lname">Email</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="mail" name="email" required onkeyup="validate_mail()" value=<%= email %>>
+            <span id="wrong_mail_alert"></span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="lname">Num&eacute;ro de t&eacute;lephone</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="phone" name="phone" required onkeyup="validate_phone()" value=<%= phone %>>
+            <span id="wrong_phone_alert"></span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="country">Recherche d'emplois</label>
+          </div>
+          <div class="col-75">
+            <label class="switch">
+              <% if(statusEmp === 1) { %>
+                <input id="statusEmp" name="statusEmp" type="checkbox" onchange="changeStatusEmp()" value="true" checked>
+              <% } else{ %>
+                <input id="statusEmp" name="statusEmp" type="checkbox" onchange="changeStatusEmp()" value="false">
+              <% } %>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="subject">D&eacute;scriptions</label>
+          </div>
+          <div class="col-75">
+            <div>
+              <textarea id="description" name="bio" style="height:200px" required onkeyup="validate_alphaDescription()" value=<%= bio %>></textarea>
+              <span id="wrong_description_alert"></span>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <input type="submit" id="create" value="Enregistrer">
+        </div>
+      </form>
+    </div>
+  </section>
+  <!-- END .container-fluid -->
+  <footer>
+    <%- include('./partials/footer2'); %>
+  </footer>
+
+
+  <script src="javascripts/js/jquery.min.js"></script>
+  <script src="javascripts/js/bootstrap.min.js"></script>
+  <script src="javascripts/js/jquery.masonry.min.js"></script>
+  <script src="javascripts/js/main.js"></script>
+  <script src="javascripts/style.js" type="text/javascript"></script>
+
+  <script src="/javascripts/js/student.js" type="text/javascript"></script>
+
+  <script>
+    async function changeStatusEmp() {
+      var element = document.getElementById("statusEmp");
+
+      if (element.checked) {
+        element.value = true;
+      } else {
+        element.value = false;
+      }
+	  }
+  </script>
+
+  <script>
+	let fileInput = document.getElementById('inputFileAvatar');
+	fileInput.addEventListener('change', function(event) {
+		if(event.target.files) {
+			let file = event.target.files[0];
+
+			var reader  = new FileReader();
+			reader.readAsDataURL(file);
 			
-				  </ul>
-				</div>
-			  </nav>
-		</div>
-	  </div>
+      reader.onloadend = function (e) {
+				var image = new Image();
+        image.src = e.target.result;
 
-	
-	<!-- END #fh5co-header -->
-	<div class="page-content2">
+        image.onload = function () {
+          var w = this.width;
+          var h = this.height;
 
-		<h1 class="no-margin">Modifier Profil</h1>
+          console.log("image.width", w);
+          console.log("image.height", h);
 
-			
+          if (this.width > "400" || this.height > "400") {
+            document.getElementById('avatarFileError').innerText = "La dimension de l'image doit être de 400px maximum."
+          } else {
+            document.getElementById('avatarFileError').innerText = "";
 
-		</div>
-	
-		<div>
+            var studentPhoto = document.getElementById('studentPhoto');
+            studentPhoto.setAttribute("src",image.src);
 
-		</div>
-
-		<section>
-
-		<div class="row">
-			
-			<div class="container">
-				
-
-				<img src=<%= imagepath %> alt="Nature" style="left: 70px ;  width:300px;border-radius: 70%;" class="responsive">
-			</div>
-			</div>
-		
-
-<div class="container">
-<form  method="post" action="/Etud-Mprofil">
-
-
-		<div class="row">
-		<div class="col-25">
-			<label for="avatar">choisir la photo de profile :</label>
-		</div>
-
-		
-		<div><div class="col-75" >
-			<input type="file" id="avatar" name="pathimg" accept="image/png, image/jpeg"></div>
-		</div>
-			
-	</div>
-
-
-
-	<div class="row">
-		<div class="col-25">
-			<label for="fname">Nom</label>
-		</div>
-
-		
-		<div><div class="col-75" >
-			<input type="text"  
-			id= "alphaNom"
-			name="name"
-			required onkeyup="validate_alphaNom()"
-			placeholder= <%= usersurname %>>
-			<span id="wrong_nom_alert" ></span></div>
-		</div>
-			
-	</div>
-	<div class="row">
-		<div class="col-25">
-			<label for="fname">pr&eacute;nom</label>
-		</div>
-	
-		
-		<div><div class="col-75" >
-
-			<input type="text" 
-			id="alphaPrenom" 
-			name="surname" 
-			required onkeyup="validate_alphaPrenom()"
-			placeholder=<%= username %> >
-			<span id="wrong_nom_alert" ></span></div>
-		</div>
-			
-	</div>
-	<div class="row">
-		<div class="col-25">
-		<label for="lname">Email</label> 
-		</div>
-		<div class="col-75">
-		<input type="text"
-			id="mail"
-			name="email" 
-			required onkeyup="validate_mail()"
-			placeholder=<%= email %>
-			>
-			<span id="wrong_mail_alert"></span>
-		</div>
-
-	</div>		
-	<div class="row">
-		<div class="col-25"> 
-			<label for="lname">Num&eacute;ro de t&eacute;lephone</label>
-		</div>
-		<div class="col-75">
-			
-			<input type="text"
-			id="phone"
-			name="phone" 
-			required onkeyup="validate_phone()"
-			placeholder=<%= phone %> >
-
-			
-			<span id="wrong_phone_alert"></span>
-		</div>
-		</div>		 
-		
-
-
-<div class="row">
-	<div class="col-25">
-	<label for="country">Recherche d'emplois</label>
-	</div>
-	<div class="col-75">
-	<label class="switch" >
-
-		<% if(statutemp == 1){ %>
-			<input name="satutemp" type="checkbox"  checked >
-			<% } else{ %>  
-			<input name="satutemp" type="checkbox"   >
-			<% } %>	
-	
-	<span class="slider"></span>
-	</label>
-	</div>
-</div>
-
-	
-
-
-	
-<div class="row">
-	<div class="col-25">
-	<label for="subject">D&eacute;scriptions</label>
-	</div>
-
-
-
-	<div class="col-75">
-	<div><textarea
-			id="description" 
-		name="bio"
-		style="height:200px"
-		required onkeyup="validate_alphaDescription()"
-		placeholder=<%= bio %> >
-</textarea>
-	<span id="wrong_description_alert"></span>
-</div>
-	
-	</div>
-	
-</div>
-<br>
-<div class="row">
-	<input type="submit" id="create" value="Enregistrer">
-</div>
-</form>
-
-
-
-
-	
-	
-</div>
-
-
-
-		</section>
-
-	
-	<!-- END .container-fluid -->
-	<footer  >
-		<%- include('./partials/footer2'); %>
-	</footer>
-
-
-<script src="javascripts/js/jquery.min.js"></script>	
-<script src="javascripts/js/bootstrap.min.js"></script>	
-<script src="javascripts/js/jquery.masonry.min.js"></script>
-<script src="javascripts/js/main.js"></script>
-<script src="javascripts/style.js" type="text/javascript"></script>
-
+            var avatarImg = document.getElementById('avatarImg');
+            avatarImg.setAttribute("value", image.src);
+          }
+        }
+			}
+		}
+	});
+  </script>
 </body>
-
 </html>
-

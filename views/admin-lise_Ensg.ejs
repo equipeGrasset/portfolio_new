@@ -56,89 +56,76 @@
 
     <table id="myTable" >
       <tr class="header">
+        <th style="width:60%;">Prenom</th>
         <th style="width:60%;">Nom</th>
-        <th style="width:60%;">prenom</th>
         <th style="width:60%;">NE</th>
-        <th style="width:40%;"> <i class="fa fa-trash"></i> <a  href="register-enseignant.html">+ Ajouter ensiegnant</a> </th>
+        <th style="width:40%;"><i class="fa fa-trash"></i> <a  href="register-enseignant.html">+ Ajouter ensiegnant</a> </th>
 
         
       </tr>
       <% for(i=0; i<resultat.length; i++) { %>
-      <tr>
-        <td><%= resultat[i].professor_name %></td>
-        <td><%= resultat[i].professor_surname %></td>
-        <td><%= resultat[i].employee_number %></td>
-        
-        
-                  
-        <td ><input type="button" class="btn" value="Supprimer" onclick="supprimer('<%= resultat[i].employee_number %>')"></td>
-     </tr>
-    
-  
+        <tr>
+          <td><%= resultat[i].professor_name %></td>
+          <td><%= resultat[i].professor_surname %></td>
+          <td><%= resultat[i].employee_number %></td>
+          <td ><input type="button" class="btn" value="Supprimer" onclick="supprimer('<%= resultat[i].employee_number %>')"></td>
+        </tr>
       <% } %>
-        
-
-
-
-          
-      
     </table>
 
-
-  
-  
-<!-- jQuery -->
-<script src="javascripts/js/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="javascripts/js/bootstrap.min.js"></script>
-<!-- masonry -->
-<script src="javascripts/js/jquery.masonry.min.js"></script>
-<!-- MAIN JS -->
-<script src="javascripts/js/main.js"></script>
-<script>
-  function myFunction() {
-    // Declare variables
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("myTable");
-    tr = table.getElementsByTagName("tr");
-  
-    // Loop through all table rows, and hide those who don't match the search query
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
+  <!-- jQuery -->
+  <script src="javascripts/js/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="javascripts/js/bootstrap.min.js"></script>
+  <!-- masonry -->
+  <script src="javascripts/js/jquery.masonry.min.js"></script>
+  <!-- MAIN JS -->
+  <script src="javascripts/js/main.js"></script>
+  <script>
+    function myFunction() {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+    
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
         }
       }
     }
-  }
-  
-  function supprimer(id) {
+    
+    function supprimer(id) {
+      var retVal = confirm(`Voulez-vous supprimer le Professor ${id}?`);
+      if( retVal === false ) {
+        return;
+      }
 
-let pointFinal = "admin-lise_Ensg/" + id
-fetch(
-  pointFinal, {method : "DELETE"}
-).then(
-  (reponse)=> reponse.json()
-).then(
-  (donnee)=> window.location.href = donnee.routeRacine
-).catch((erreur)=> console.log(erreur))
+      let pointFinal = "/admin-lise_Ensg/" + id
+      fetch(pointFinal, {method : "DELETE"})
+      .then((reponse)=> reponse.json())
+      .then((donnee)=> window.location.href = donnee.routeRacine)
+      .catch((erreur)=> console.log(erreur))
+    }
 
-}
-function fConfirmatoion() {
-  let text = "Press a button!\nEither OK or Cancel.";
-  if (confirm(text) == true) {
-    text = "You pressed OK!";
-  } else {
-    text = "You canceled!";
-  }
-  document.getElementById("demo").innerHTML = text;
-}
+    function fConfirmatoion() {
+      let text = "Press a button!\nEither OK or Cancel.";
+      if (confirm(text) == true) {
+        text = "You pressed OK!";
+      } else {
+        text = "You canceled!";
+      }
+      document.getElementById("demo").innerHTML = text;
+    }
   </script>
 
 </body>

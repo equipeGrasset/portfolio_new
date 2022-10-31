@@ -22,8 +22,6 @@ const optionBd = {
 
 
 
-
-
 //exp1
 const myConnection = require("express-myconnection");
 
@@ -52,11 +50,12 @@ const logoutRouter = require('./routes/logout');
 const passwordChangedRouter = require('./routes/passwordChanged');
 const forgottenPasswordRouter = require('./routes/forgottenPassword');
 
-//creation acount
+//creation account
 const createStudentAccountRouter = require('./routes/createStudentAccount'); 
 const accountStudentCreatedRouter = require('./routes/accountStudentCreated');
 const createAccountRouter = require('./routes/createAccount');
-const accountCreatedRouter = require('./routes/accountCreated');
+const accountAdminCreatedRouter = require('./routes/accountAdminCreated');
+const accountProfessorCreatedRouter = require('./routes/accountProfessorCreated');
 
 
 //Etudiant
@@ -65,6 +64,7 @@ var Etud_Mprofil = require('./routes/Etud-Mprofil');
 var Etud_motPasse = require('./routes/Etud-motPasse');
 var Etud_liste_elem = require('./routes/Etud-liste_elem');
 var Etud_ajout_elem = require('./routes/Etud-ajout_elem');
+var Etud_modifier_elem = require('./routes/Etud-modifier_elem');
 
 //Admin
 var admin_Mprofil = require('./routes/admin-Mprofil');
@@ -74,14 +74,11 @@ var adminLiseAdmins = require('./routes/admin-lise_admins');
 var admin_Lise_Ensg = require('./routes/admin-lise_Ensg');
 var admin_lise_EtudATT = require('./routes/admin-lise_EtudATT'); 
 var admin_liste_elem = require('./routes/admin-liste_elem');
+
 //Enseignant
 var Ensg_lise_Etud = require('./routes/Ensg-lise_Etud');
 var Ensg_Mprofil = require('./routes/Ensg-Mprofil');
 var Ensg_motPasse = require('./routes/Ensg-motPasse');
-
-
-
-
 
 
 var app = express();
@@ -117,10 +114,11 @@ app.use('/login', loginRouter);
 app.use('/logout', authenticationMiddleware, logoutRouter);
 app.use('/users', authenticationMiddleware, usersRouter);
 
-//create acount
+//create account
 app.use('/accountStudentCreated', accountStudentCreatedRouter);
 app.use('/createStudentAccount', createStudentAccountRouter);
-app.use('/accountCreated', accountCreatedRouter);
+app.use('/accountAdminCreated', accountAdminCreatedRouter);
+app.use('/accountProfessorCreated', accountProfessorCreatedRouter);
 app.use('/accountStudentCreated', accountStudentCreatedRouter);
 app.use('/createAccount', authenticationMiddleware, createAccountRouter);
 
@@ -153,7 +151,7 @@ app.use('/Etud-Mprofil', authenticationMiddleware, Etud_Mprofil);
 app.use('/Etud-motPasse', authenticationMiddleware, Etud_motPasse);
 app.use('/Etud-liste_elem', authenticationMiddleware, Etud_liste_elem);
 app.use('/Etud-ajout_elem', authenticationMiddleware, Etud_ajout_elem);
-
+app.use('/Etud-modifier_elem', authenticationMiddleware, Etud_modifier_elem);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

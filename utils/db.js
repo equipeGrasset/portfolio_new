@@ -15,17 +15,13 @@ async function connect() {
 }
 
 //Etudiant
-async function MProfilETud(body,user) {
-
-    const {name, surname, satutemp, pathimg, email, bio, phone} = body;
-
-
+async function MProfilETud(name, surname, statusEmp = false, avatarImg, email, bio, phone, user) {
     const conn = await connect();
 
     try {
         await disableAutoCommit(conn);
 
-        await ModifierProfilETud(conn, user, name, surname, null, "images/"+pathimg, email, bio, phone);
+        await ModifierProfilETud(conn, user, name, surname, Boolean(statusEmp), avatarImg, email, bio, phone);
 
         await doCommit(conn);
 
@@ -102,13 +98,22 @@ async function findStudent(studentId) {
         return null;
     }
 }
-async function findStudentById(studentId) {
+
+async function findProject(projectId) {
 
     const conn = await connect();
 
-    const selectStudentSql = "SELECT s.student_id, u.user_id FROM students s INNER JOIN users u ON s.student_DA = u.user_id WHERE user_id = ?";
-    const rows = await conn.query(selectStudentSql, [studentId]);
-
+    const selectStudentSql = `
+    SELECT 
+            p.* 
+            , f.file_id
+            , f.file_name
+            , f.file_path
+        FROM 
+            projects p 
+            LEFT JOIN files f ON f.project_id = p.project_id
+        WHERE p.project_id = ?`;
+    const rows = await conn.query(selectStudentSql, [projectId]);
 
     if (rows.length > 0) {
         return rows[0];
@@ -117,11 +122,11 @@ async function findStudentById(studentId) {
     }
 }
 
-async function findproject(studentId) {
+async function findStudentById(studentId) {
 
     const conn = await connect();
 
-    const selectStudentSql = "u.project_id , u.project_name, u.project_description , u.project_url FROM students s INNER JOIN projects u ON s.student_id = u.proj_stud_id WHERE student_id = ?";
+    const selectStudentSql = "SELECT s.student_id, u.user_id FROM students s INNER JOIN users u ON s.student_DA = u.user_id WHERE user_id = ?";
     const rows = await conn.query(selectStudentSql, [studentId]);
 
 
@@ -140,7 +145,16 @@ async function findAllProjectsByStudentId(studentId) {
 
 async function findAllStudentsTagged() {
     const conn = await connect();
-    const selectStudentSql = "SELECT * FROM students s WHERE s.student_tagged = 1";
+    const selectStudentSql = `
+    SELECT 
+        * 
+    FROM 
+        students s 
+        INNER JOIN users u ON u.user_id = s.student_DA 
+    WHERE 
+        s.student_tagged = 1 
+        AND s.student_portfolio_active = 1 
+        AND u.user_active = 1`;
     return await conn.query(selectStudentSql);
 }
 
@@ -166,16 +180,39 @@ async function findListeproject(studentId) {
 }
 
 async function insertProject(project) {
-    console.log("project", project);
+    console.log("Creating project", project);
     const conn = await connect();
-    const query = "INSERT INTO `projects`(`project_id`, `project_name`, `project_description`, `proj_stud_id`, `project_url`, `project_active`) VALUES (LAST_INSERT_ID(), ?, ?, ?, ?, ?)";
-    return await conn.query(query, [project.titre, project.description, project.studentId, project.url, 1]);
+    const query = "INSERT INTO `projects`(`project_name`, `project_description`, `proj_stud_id`, `project_url`, `project_active`) VALUES (?, ?, ?, ?, ?)";
+
+    await conn.query(query, [project.titre, project.description, project.studentId, project.url, 1]);
+
+    const selectidQuery = "SELECT LAST_INSERT_ID() as id";
+    const rows = await conn.query(selectidQuery);
+
+    if (rows.length > 0) {
+        return rows[0];
+    } else {
+        return null;
+    }
+}
+
+async function insertFile(file) {
+    console.log("Creating file", file);
+    const conn = await connect();
+    const query = "INSERT INTO `files`(`file_name`, `file_path`, `project_id`) VALUES (?, ?, ?)";
+    return await conn.query(query, [file.name, file.path, file.projectId]);
 }
 
 async function updateProject(project) {
     const conn = await connect();
-    const query = "UPDATE projects SET project_name = ?, project_description = ? WHERE project_id = ?";
-    return await conn.query(query, [project.titre, project.description, project.id]);
+    const query = "UPDATE projects SET project_name = ?, project_description = ?, project_url = ? WHERE project_id = ?";
+    return await conn.query(query, [project.titre, project.description, project.url, project.id]);
+}
+
+async function updateFile(file) {
+    const conn = await connect();
+    const query = "UPDATE files SET file_name = ?, file_path = ? WHERE file_id = ?";
+    return await conn.query(query, [file.name, file.path, file.id]);
 }
 
 async function updatePassword(conn, userId, newPassword) {
@@ -214,7 +251,7 @@ async function createAccount(body) {
 
 async function MprofilEnsg(body,user) {
 
-    const {userId, name, Prenom, email, phone} = body;
+    const {userId, nom, prenom, email, phone} = body;
 
 
     const conn = await connect();
@@ -222,7 +259,7 @@ async function MprofilEnsg(body,user) {
     try {
         await disableAutoCommit(conn);
 
-        await ModifierProfilEnsg(conn, user, name, Prenom, email, phone);
+        await ModifierProfilEnsg(conn, user, prenom, nom, email, phone);
 
         await doCommit(conn);
 
@@ -237,14 +274,14 @@ async function MprofilEnsg(body,user) {
 
 async function MProfilAdmin(body,user) {
 
-    const {userId, name, Prenom, email, phone} = body;
+    const {userId, nom, prenom, email, phone} = body;
     
     const conn = await connect();
     
     try {
         await disableAutoCommit(conn);
     
-        await ModifierProfilAdmin(conn, user, name, Prenom, email, phone);
+        await ModifierProfilAdmin(conn, user, prenom, nom, email, phone);
 
         await doCommit(conn);
 
@@ -274,20 +311,41 @@ async function enableAutoCommit(conn) {
  
 
 async function createStudent(conn, userId, name, surname, programmes) {
-    const insertStudentSql = "INSERT INTO students (student_DA, student_name, student_surname, student_program, student_id) VALUES (?,?,?,?,LAST_INSERT_ID())";
+    const insertStudentSql = "INSERT INTO students (student_DA, student_name, student_surname, student_program) VALUES (?,?,?,?)";
     await conn.query(insertStudentSql, [userId, name, surname, programmes]);
 }
 
 //Etudiant
-async function ModifierProfilETud(conn, userId, name, surname, satutemp, pathimg, email, bio, phone) {
-    const insertStudentSql = "UPDATE students SET student_name = ? ,student_surname = ? ,student_employe_intern_status = ?, student_photo = ? , student_email = ?, student_biography = ? ,student_telephone = ? WHERE student_DA = ? ";
-    await conn.query(insertStudentSql, [name, surname, satutemp, pathimg, email, bio, phone, userId]);
+async function ModifierProfilETud(conn, userId, name, surname, statusEmp = false, avatarImg, email, bio, phone) {
+
+    const insertStudentSql = "UPDATE students SET student_name = ?, student_surname = ?, student_employe_intern_status = ?, student_photo = ? , student_email = ?, student_biography = ? ,student_telephone = ? WHERE student_DA = ? ";
+
+    await conn.query(insertStudentSql, [name, surname, statusEmp, avatarImg, email, bio, phone, userId]);
 }
 
 async function createAdminAccount(body) {
 
     const {userId, password, userRole, name, surname, telephone, email, questionSecrete_1, questionSecrete_2} = body;
     const user_password = bcrypt.hashSync(password, 12);
+
+    const conn = await connect();
+    
+    try {
+        await disableAutoCommit(conn);
+
+        await createUser(conn, userId, user_password, userRole, questionSecrete_1, questionSecrete_2);
+        await createAdmin(conn, userId, name, surname, telephone, email);
+
+        await doCommit(conn);
+
+        await enableAutoCommit(conn);
+    } catch (error) {
+        console.error(error);
+        throw error;
+    } 
+    // finally {
+    //     conn.close();
+    // }
 }
 
 //Etudiant
@@ -331,15 +389,15 @@ async function createUser(conn, userId, user_password, userRole, questionSecrete
     } 
 }
 
-
 async function createAdmin(conn, userId, name, surname, telephone, email) {
-    const insertAdminSql = "INSERT INTO administrators (employee_number, administrator_name, administrator_surname, administrator_telephone, administrator_email, administrator_id) VALUES (?,?,?,?,?,LAST_INSERT_ID())";
+    const insertAdminSql = "INSERT INTO administrators (employee_number, administrator_name, administrator_surname, administrator_telephone, administrator_email) VALUES (?,?,?,?,?)";
+    //const insertAdminSql = "INSERT INTO administrators (employee_number, administrator_name, administrator_surname, administrator_telephone, administrator_email, administrator_id) VALUES (?,?,?,?,?,LAST_INSERT_ID())";
     await conn.query(insertAdminSql, [userId, name, surname, telephone, email]);
 }
 
-
 async function createProfessor(conn, userId, name, surname, telephone, email) {
-    const insertProfessorSql = "INSERT INTO professors (employee_number, professor_name, professor_surname, professor_telephone, professor_email, professor_id) VALUES (?,?,?,?,?,LAST_INSERT_ID())";
+    const insertProfessorSql = "INSERT INTO professors (employee_number, professor_name, professor_surname, professor_telephone, professor_email) VALUES (?,?,?,?,?)";
+    //const insertProfessorSql = "INSERT INTO professors (employee_number, professor_name, professor_surname, professor_telephone, professor_email, professor_id) VALUES (?,?,?,?,?,LAST_INSERT_ID())";
     await conn.query(insertProfessorSql, [userId, name, surname, telephone, email]);
 }
 
@@ -453,6 +511,8 @@ async function createProgramProfessor(conn, programmes, userId) {
     // Le format qu'on cherche c'est comme ça
     // Values: (1, 4, 5),(11, 4, 6),(13, 4, 7)
     console.log ("Values: " + insertValues); 
+
+    await conn.query(`INSERT INTO programs_professors(program_id, professor_id, pp_id) VALUES ${insertValues}`);
 }
 
 async function activateUser(userId, status, role) {
@@ -468,16 +528,50 @@ async function activateUser(userId, status, role) {
     }
 }
 
+async function deleteUser(userId) {
+
+    const conn = await connect();
+    const query = `DELETE FROM users WHERE user_id = ?`
+
+    try {
+        await conn.query(query, [userId]);
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
+
+async function deleteProject(projectId) {
+
+    const conn = await connect();
+    const query = `DELETE FROM projects WHERE project_id = ?`
+
+    try {
+        await conn.query(query, [projectId]);
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
+
 async function tagStudent(studentId, tagged) {
-
-    console.log("studentId", studentId);
-    console.log("tagged", tagged);
-
     const conn = await connect();
     const query = `UPDATE students SET student_tagged = ? WHERE student_DA = ?`
 
     try {
         await conn.query(query, [tagged, studentId]);
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
+
+async function activateStudentPortfolio(studentId, status) {
+    const conn = await connect();
+    const query = `UPDATE students SET student_portfolio_active = ? WHERE student_DA = ?`
+
+    try {
+        await conn.query(query, [status, studentId]);
     } catch (error) {
         console.error(error);
         throw error;
@@ -490,10 +584,10 @@ module.exports = { connect,
     findAllProjectsByStudentId,
     createAdmin,
     changerPassword,
+    createAdminAccount,
     createProfessorAccount,
     createStudentAccount,
     findListeproject,
-    findproject ,
     MProfilETud,
     MprofilEnsg,
     findStudentProfil,
@@ -507,6 +601,12 @@ module.exports = { connect,
     updateProject,
     tagStudent,
     findAllStudentsTagged,
-    findAllStudentByProfessorId
+    findAllStudentByProfessorId, 
+    deleteUser,
+    activateStudentPortfolio,
+    findProject,
+    deleteProject,
+    insertFile,
+    updateFile
 }
  

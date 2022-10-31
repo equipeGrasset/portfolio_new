@@ -80,7 +80,8 @@
 
 <body>
   <div class="header">
-    <a href="https://www.institut-grasset.qc.ca"><img src="images/IGR_logo_blac.jpg" alt="Present Free HTML5 Bootstrap Template"></a>
+    <a href="https://www.institut-grasset.qc.ca"><img src="images/IGR_logo_blac.jpg"
+        alt="Present Free HTML5 Bootstrap Template"></a>
     <div class="header-right">
       <nav class="header-right">
         <div class="container-fluid">
@@ -121,14 +122,17 @@
     </div>
 
     <div class="container">
-      <form action="/Etud-ajout_elem" method="post" enctype="multipart/form-data">
+      <form action="/Etud-modifier_elem" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<%= projectId %>">
+        <input type="hidden" name="fileId" value="<%= fileId %>">
+        <input type="hidden" name="fileName" value="<%= fileName %>">
+
         <div class="row">
           <div class="col-25">
             <label for="fname">Titre du projet</label>
           </div>
           <div class="col-75">
-            <input type="text" name="titre" id="alphaNom" placeholder="Votre Nom.." required
-              onkeyup="validate_alphaNom()">
+            <input type="text" name="titre" id="alphaNom" placeholder="Votre Nom.." value="<%= titre %>" required onkeyup="validate_alphaNom()">
             <span id="wrong_nom_alert"></span>
           </div>
         </div>
@@ -138,6 +142,12 @@
             <label for="fname">File:</label>
           </div>
           <div class="col-75">
+            <% if(fileName) { %>
+              <div style="margin: 1rem 0;">
+                <div><%= fileName %></div>
+                <div><%= filePath %></div>
+              </div>
+            <% } %>
             <input type="file" id="myfile" name="myfile">
             <span id="wrong_nom_alert"></span>
           </div>
@@ -147,7 +157,7 @@
           <div class="col-25">
             <label for="fname">Lien vers :</label>
           </div>
-          <input type="text" id="lien" name="url" placeholder="http:// ">
+          <input type="text" id="lien" name="url" placeholder="http:// " value="<%= url %>">
           <span id="wrong_lien_alert"></span>
         </div>
 
@@ -157,7 +167,7 @@
           </div>
           <div class="col-75">
             <div><textarea id="description" name="description" placeholder="Write something.." style="height:200px"
-                required onkeyup="validate_alphaDescription()"></textarea>
+                required onkeyup="validate_alphaDescription()"><%= description %></textarea>
               <span id="wrong_description_alert"></span>
             </div>
             <br>

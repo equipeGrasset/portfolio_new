@@ -17,11 +17,11 @@ router.post('/', async function(req, res, next) {
   try{
     if (body.userRole === '2') {
       await db.createProfessorAccount(body);
-      res.render('accountCreated', { });
+      res.render('accountProfessorCreated', { });
     }
     if (body.userRole === '3') {
       await db.createAdminAccount(body);
-      res.render('accountCreated', { });
+      res.render('accountAdminCreated', { });
     }
   } catch (error) {
     console.error(error);
