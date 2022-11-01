@@ -39,8 +39,7 @@
   </div>
 
   <!-- END #fh5co-header -->
-
-  <div class="grid-container">
+ 
     <div class="grid-child purple">
       <div class="page-content">
         <div class="myDiv">
@@ -63,17 +62,22 @@
 
       </div>
     </div>
+
 	<% if(projects.length > 0) { %>
 		<div class="grid-child green">
 			<div class="page-content">
+        <div class="myDiv">
 				<div class="meta"><span><a href="#">Nome du projet</a></span></div>
 				<h1 class="mb0"><%= projects[0].project_name %></h1><br>
 				<p>Description du projet : <br> <br><%= projects[0].project_description %>
 				</p>
 				<a href=<%= projects[0].project_url %>>Lier vers le video complet : <%= projects[0].project_url %></a>
-				<p> <br><img src="images/exmp1.png" alt="portfolio"></p>
-				<p><img src="images/exmp1-3.png" alt="portfolio"></p>
-				<p><img src="images/exmp1-4.png" alt="portfolio"></p>
+				<% if(files != null ) { %>
+        <img src="<%= filesPath %>" width="400px">
+        <% } %>
+
+
+      </div>
 			</div>
 		</div>
 		<div class="grid-child yellow">
@@ -81,15 +85,18 @@
 				<% for(i=0; i < projects.length; i++) { %>
 					<div class="fh5co-project masonry-brick col-xs-4">
 						<a href="#">
-							<img src="https://via.placeholder.com/300" width="300px" alt="portfolio">
-							<h2><%= projects[i].project_name %></h2>
+							<img src="images/file4.png" width="150px" alt="portfolio">
+							<h5><%= projects[i].project_name %></h5>
 						</a>
 					</div>
 				<% } %>
 			</div>
-		</div>
+		 
 	<% } %>
 
+
+
+  
 	<% if(projects.length == 0) { %>
 		<div class="grid-child green" style="margin: auto;">
 			<p style="margin: 20px auto;">Aucun element créé</p>
