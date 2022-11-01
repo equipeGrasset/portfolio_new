@@ -189,3 +189,48 @@ function showTypeRole(){
 		document.getElementById('divButtonValider').style.display = 'block';
 	}
 }
+function validate_phone() 
+{ 
+    var phone = document.getElementById('phone').value;
+
+    if (!/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/.test(phone)) 
+    {
+        document.getElementById('wrong_phone_alert').style.color = 'red';
+        document.getElementById('wrong_phone_alert').style["font-weight"] = "bold";
+        document.getElementById('wrong_phone_alert').style["font-size"] = "15px";
+        document.getElementById('wrong_phone_alert').innerHTML = 'Vous devez entrer un numéro de téléphone valide';
+        document.getElementById('create').disabled = true;
+        document.getElementById('create').style.opacity = (0.4);
+    } 
+    else 
+    {
+        document.getElementById('wrong_phone_alert').style.color = 'green';
+        document.getElementById('wrong_phone_alert').style["font-weight"] = "bold";
+        document.getElementById('wrong_phone_alert').innerHTML = '';
+        document.getElementById('create').disabled = false;
+        document.getElementById('create').style.opacity = (1);
+    }    
+}
+
+function validate_mail() 
+{ 
+    var mail = document.getElementById('mail').value;
+
+    if (!/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(mail)) 
+    {
+        document.getElementById('wrong_mail_alert').style.color = 'red';
+        document.getElementById('wrong_mail_alert').style["font-weight"] = "bold";
+        document.getElementById('wrong_mail_alert').style["font-size"] = "15px";
+        document.getElementById('wrong_mail_alert').innerHTML = 'Vous devez entrer un mail au bon format';
+        document.getElementById('create').disabled = true;
+        document.getElementById('create').style.opacity = (0.4);
+    } 
+    else 
+    {
+        document.getElementById('wrong_mail_alert').style.color = 'green';
+        document.getElementById('wrong_mail_alert').style["font-weight"] = "bold";
+        document.getElementById('wrong_mail_alert').innerHTML = '';
+        document.getElementById('create').disabled = false;
+        document.getElementById('create').style.opacity = (1);
+    }    
+}
