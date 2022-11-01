@@ -7,7 +7,7 @@
 </head>
 <body>
   <div class="header">
-    <a href="https://www.institut-grasset.qc.ca"><img src="images/IGR_logo_blac.jpg"alt="Present Free HTML5 Bootstrap Template"></a>
+    <a href="https://www.institut-grasset.qc.ca"><img src="/images/IGR_logo_blac.jpg"alt="Present Free HTML5 Bootstrap Template"></a>
     <div class="header-right">
       <nav class="header-right">
         <div class="container-fluid">
@@ -40,40 +40,19 @@
 
   <!-- END #fh5co-header -->
  
-    <div class="grid-child purple">
-      <div class="page-content">
-        <div class="myDiv">
-          <h1 class="no-margin"><%= username %> <%= usersurname %></h1>
-          <% if(imagepath) { %>
-            <img src=<%= imagepath %> style="left: 70px ;  width:300px;border-radius: 70%;" class="responsive">
-          <% } else { %>
-            <img src="https://via.placeholder.com/300" style="left: 70px ;  width:300px;border-radius: 70%;" class="responsive">
-          <% } %>
-          <p><%= bio %> </p>
-          <p>Contactez moi sur : </p>
-          <p>Email : <%= email %></p>
-          <p>Num&eacute;ro de t&eacute;lephone : <%= phone %> </p>
-          <% if(statutemp == 1){ %>
-          <p style="color: rgb(255, 0, 0);">Je suis a la Recherche de travaille </p>
-          <% } else{ %>
-          <p> </p>
-          <% } %>
-        </div>
-
-      </div>
-    </div>
+ 
 
 	<% if(projects.length > 0) { %>
 		<div class="grid-child green">
 			<div class="page-content">
         <div class="myDiv">
 				<div class="meta"><span><a href="#">Nome du projet</a></span></div>
-				<h1 class="mb0"><%= projects[0].project_name %></h1><br>
-				<p>Description du projet : <br> <br><%= projects[0].project_description %>
+				<h1 class="mb0"><%= projects[1].project_name %></h1><br>
+				<p>Description du projet : <br> <br><%= projects[1].project_description %>
 				</p>
-				<a href=<%= projects[0].project_url %>>Lier vers le video complet : <%= projects[0].project_url %></a>
+				<a href=<%= projects[0].project_url %>>Lier vers le video complet : <%= projects[1].project_url %></a>
 				<% if(files != null ) { %>
-        <img src="<%= filesPath %>" width="400px">
+        <img src="<%=  project.file_path %>" width="400px">
         <% } %>
 
 
@@ -85,7 +64,7 @@
 				<% for(i=0; i < projects.length; i++) { %>
 					<div class="fh5co-project masonry-brick col-xs-4">
 						 
-							<img src="images/file4.png" width="150px" alt="portfolio">
+							<img src="/images/file4.png" width="150px" alt="portfolio">
 							<h5><a href="/Etud-elemnt_portfolio/<%= projects[i].project_id %>"></i> <%= projects[i].project_name %></a></h5>
               
 						</a>

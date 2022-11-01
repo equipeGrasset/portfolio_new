@@ -68,6 +68,9 @@ var Etud_liste_elem = require('./routes/Etud-liste_elem');
 var Etud_ajout_elem = require('./routes/Etud-ajout_elem');
 var Etud_modifier_elem = require('./routes/Etud-modifier_elem');
 
+
+var Etud_elemnt_portfolio = require('./routes/Etud-elemnt_portfolio');
+
 //Admin
 var admin_Mprofil = require('./routes/admin-Mprofil');
 var admin_motPasse = require('./routes/admin-motPasse');
@@ -154,6 +157,10 @@ app.use('/Etud-motPasse', authenticationMiddleware, Etud_motPasse);
 app.use('/Etud-liste_elem', authenticationMiddleware, Etud_liste_elem);
 app.use('/Etud-ajout_elem', authenticationMiddleware, Etud_ajout_elem);
 app.use('/Etud-modifier_elem', authenticationMiddleware, Etud_modifier_elem);
+
+
+
+app.use('/Etud-elemnt_portfolio', authenticationMiddleware, Etud_elemnt_portfolio);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
