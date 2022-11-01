@@ -269,7 +269,20 @@ async function MprofilEnsg(body,user) {
         throw error;
     } 
 }
+async function findFiles(prjoectID) {
 
+    const conn = await connect();
+    
+    const selectStudentSql = "SELECT  p.project_name, f.file_time_created, f.file_name, f.file_path FROM students s JOIN projects p ON s.student_id = p.proj_stud_id JOIN files f ON p.project_id  = f.project_id WHERE s.student_id = ?";
+    const rows = await conn.query(selectStudentSql, [prjoectID]);
+    
+    
+    if (rows.length > 0) {
+        return rows[0];
+    } else {
+        return null;
+    }
+    }
 //ADmin
 
 async function MProfilAdmin(body,user) {
@@ -598,6 +611,7 @@ module.exports = { connect,
     validerCredentials ,
     activateUser,
     insertProject,
+    findFiles,
     updateProject,
     tagStudent,
     findAllStudentsTagged,

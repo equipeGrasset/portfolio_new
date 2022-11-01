@@ -11,6 +11,9 @@ router.get('/', async function(req, res, next) {
   projects = await db.findAllProjectsByStudentId(student.student_id);
   student.projects = projects;
 
+  files = await db.findFiles(student.student_id);
+  projects.files = files;
+
   res.status(200).render('Etud-portfolio', {
     title: 'Étudiant',
     usersurname: student.student_surname,
@@ -20,7 +23,8 @@ router.get('/', async function(req, res, next) {
     email: student.student_email,
     phone: student.student_telephone,
     bio: student.student_biography,
-    projects: student.projects
+    projects: student.projects,
+    filesPath : files.file_path
   });
 });
 
