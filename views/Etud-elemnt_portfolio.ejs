@@ -47,10 +47,10 @@
 			<div class="page-content">
         <div class="myDiv">
 				<div class="meta"><span><a href="#">Nome du projet</a></span></div>
-				<h1 class="mb0"><%= projects[1].project_name %></h1><br>
-				<p>Description du projet : <br> <br><%= projects[1].project_description %>
+				<h1 class="mb0"><%= project.project_name %></h1><br>
+				<p>Description du projet : <br> <br><%= project.project_description %>
 				</p>
-				<a href=<%= projects[0].project_url %>>Lier vers le video complet : <%= projects[1].project_url %></a>
+				<a href=<%= project.project_url %>>Lier vers le video complet : <%= project.project_url %></a>
 				<% if(files != null ) { %>
         <img src="<%=  project.file_path %>" width="400px">
         <% } %>

@@ -11,8 +11,8 @@ router.get('/:id', async function(req, res, next) {
   console.log(id+'-->'+id)
   project = await db.findProject(id);
 
-  res.render('Etud-elemnt_portfolio', { 
-    user: req.user.user_id,
+  res.render('Elemnt_portfolio', { 
+     
     projectId: project.project_id,
     titre: project.project_name,
     url: project.project_url,
@@ -24,8 +24,8 @@ router.get('/:id', async function(req, res, next) {
 });
 
 router.post("/", async (req, res) => {
-  res.render("Etud-elemnt_portfolio")
+  res.render("Elemnt_portfolio")
 });
 
+
 module.exports = router;
- 

@@ -54,7 +54,7 @@
           <p>Email : <%= email %></p>
           <p>Num&eacute;ro de t&eacute;lephone : <%= phone %> </p>
           <% if(statutemp == 1){ %>
-          <p style="color: rgb(255, 0, 0);">Je suis a la Recherche de travaille </p>
+          <p style="color: rgb(255, 0, 0);">Je suis a la Recherche d'un emploi  </p>
           <% } else{ %>
           <p> </p>
           <% } %>
@@ -71,7 +71,7 @@
 				<h1 class="mb0"><%= projects[0].project_name %></h1><br>
 				<p>Description du projet : <br> <br><%= projects[0].project_description %>
 				</p>
-				<a href=<%= projects[0].project_url %>>Lier vers le video complet : <%= projects[0].project_url %></a>
+				<a href=<%= projects[0].project_url %>>Lier vers le video complet : <%= projects[0].project_url %> <br> <br></a>
 				<% if(files != null ) { %>
         <img src="<%= filesPath %>" width="400px">
         <% } %>

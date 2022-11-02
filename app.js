@@ -41,9 +41,13 @@ function authenticationMiddleware (req, res, next) {
 
 //page principale
 
-var portfolio_vistuer = require('./routes/portfolio-vistuer');     
+var portfolio_visteur = require('./routes/portfolio-visteur');     
 var indexRouter = require('./routes/index');
 var indexPartenaire = require('./routes/indexPartenaire');
+
+// + 
+
+var Elemnt_portfolio = require('./routes/Elemnt_portfolio');
 
 //Login
 var usersRouter = require('./routes/users');
@@ -130,8 +134,12 @@ app.use('/createAccount', authenticationMiddleware, createAccountRouter);
 
 //index portfolio
 app.use('/',  indexRouter);
-app.use('/portfolio-vistuer', portfolio_vistuer);
+app.use('/portfolio-visteur', portfolio_visteur);
 app.use('/indexPartenaire',  indexPartenaire);
+
+//++
+
+app.use('/Elemnt_portfolio',  Elemnt_portfolio);
 
 //ADmin
 app.use('/admin-Mprofil', authenticationMiddleware, admin_Mprofil);
